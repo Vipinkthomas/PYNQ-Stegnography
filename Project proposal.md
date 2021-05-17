@@ -1,7 +1,6 @@
 # Project Title
 
-> Team Member 1 (sunet1) [ ,Team Member 2 (sunet2) [, and Team Member 3 (sunet3) ] ]
-
+> Team Member 1 (Majd Hafiri) ,Team Member 2 (Vipin Koshy Thomas)
 
 ## Overview
 *This section should be on the order of a few (1-2) sentences. After reading this, we should have a general sense of your final project topic. You can imagine that this is the description blurb for your project if we were to make a CS41 Final Project Program.*
