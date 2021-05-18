@@ -3,14 +3,15 @@
 > Team Member 1 (Majd Hafiri) ,Team Member 2 (Vipin Koshy Thomas)
 
 ## Overview
-*We want to create a product which helps in exchanging secret words inside Images using pixel manipulation.
+We want to create a product which helps in exchanging secret words inside Images using pixel manipulation.
 
 
 ## Background
-*This program will be used by two parties, the sender and the receiver. The sender and the receiver will be able to communicate secretly based on algorithm that manipulates the pixels of one colour image. 
+This program will be used by two parties, the sender and the receiver. The sender and the receiver will be able to communicate secretly based on algorithm that manipulates the pixels of one colour image. By changing the values of some pixels in a way which is impossible for human eyes to find the difference but possible and very easy using a software, both parties will be able to communicate securely.
 
 
 ## Implementation Strategy
+ Changing the values of pixels by for instance two levels (ex. from 255 to 253 ) will be impossible for human eyes to detect the difference between the value 255 and 253 , but it is possible and easy to detect it using a specific software.
 *This section should be on the order of a few (2-3) short paragraphs, and captures your current program design.*
 
 At a high-level, how do you plan to implement your project? How does it incorporate Python?
