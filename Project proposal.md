@@ -5,6 +5,8 @@
 ## Overview
 We want to create an IP which can curb Intelluctual property theft using Stegnography alogorithms(LSB - bit manipulation). By this, each images will be having a secret Identifier embedded in it, which can be used to check the ownership.
 
+This can also be used between two parties who want to exchange secret information through images, but they have to be agree on the position of the data  using diffie hellman or related algorithms.
+
 
 ## Background
 Since Intelluctual property theft is becoming a common act in current world scenario, companies or authorities can use this ip to embed secret identifiers in their media productions. So that we can easily identify plagarized images by checking the byte data. Doing small changes to the values for some pixels of one colour image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
