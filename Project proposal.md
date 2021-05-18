@@ -3,9 +3,9 @@
 > Team Member 1 (Majd Hafiri) ,Team Member 2 (Vipin Koshy Thomas)
 
 ## Overview
-We want to create an IP which can curb Intelluctual property theft using Stegnography alogorithms(LSB - bit manipulation). By this, each images will be having a secret Identifier embedded in it, which can be used to check the ownership.
+** Use case 1**: We want to create an IP which can curb Intelluctual property theft using Stegnography alogorithms(LSB - bit manipulation). By this, each images will be having a secret Identifier embedded in it, which can be used to check the ownership.
 
-This can also be used between two parties who want to exchange secret information through images, but they have to be agree on the position of the data  using diffie hellman or related algorithms.
+** Use Case 2**: This can also be used between two parties who want to exchange secret information through images, but they have to be agree on the position of the data  using diffie hellman or related algorithms.
 
 
 ## Background
