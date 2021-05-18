@@ -9,7 +9,7 @@ We want to create an IP which can curb Intelluctual property theft using Stegnog
 ## Background
 Since Intelluctual property theft is becoming a common act in current world scenario, this IP has huge potential  can sendThis idea will be useful for This program will be used by two parties, the sender and the receiver. The sender and the receiver will be able to communicate secretly based on algorithm that manipulates the pixels of one colour image. Doing small changes to the values for some pixels of one colour image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
 
-
+![images_bg](https://miro.medium.com/max/875/0*XWlQVMlAQra2KHSB.jpg)
 
 
 ## Implementation Strategy
