@@ -7,7 +7,6 @@
 
 **Use Case 2**: This can also be used between two parties who want to exchange secret information through images.
 
-
 ## Background
 **Use Case 1** : 
 Since Intelluctual property theft is becoming a common act in current world scenario, companies or authorities can use this ip to embed secret identifiers in their media productions. So that we can easily identify plagarized images by checking the byte data. Doing small changes to the values for some pixels of one colour image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
@@ -19,7 +18,7 @@ Since Intelluctual property theft is becoming a common act in current world scen
 image credits: [wikimedia](https://en.wikipedia.org/wiki/Bit_numbering#mediaviewer/File:Least_significant_bit.svg) , [technicalfoundation](https://technical-foundation.blogspot.com/2017/11/steganography-hide-data-in-images-with.html)
 
 
-**Use Case 2** :
+**Use Case 2** :In order to 
 Doing small changes to the values for some pixels of one colour image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
 
 
