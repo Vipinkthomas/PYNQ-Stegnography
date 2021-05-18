@@ -5,7 +5,7 @@
 ## Overview
 **Use case 1**: We want to create an IP which can curb Intelluctual property theft using Stegnography alogorithms(LSB - bit manipulation). By this, each images will be having a secret Identifier embedded in it, which can be used to check the ownership.
 
-**Use Case 2**: This can also be used between two parties who want to exchange secret information through images, but they have to be agree on the position of the data  using diffie hellman or related algorithms.
+**Use Case 2**: This can also be used between two parties who want to exchange secret information through images, but they have to be agree on the position of the data  using diffie hellmann or related algorithms.
 
 
 ## Background
@@ -18,7 +18,11 @@ Since Intelluctual property theft is becoming a common act in current world scen
 image credits: [wikimedia](https://en.wikipedia.org/wiki/Bit_numbering#mediaviewer/File:Least_significant_bit.svg) , [technicalfoundation](https://technical-foundation.blogspot.com/2017/11/steganography-hide-data-in-images-with.html)
 
 ## Implementation Strategy
-In order for both parties to agree on a a secret message , An algorithm must be implemented. This Algorithm accepts the user message and change some pixels values of an Image. Pixel values modification is based on a specific criteria (not decided yet). For example , If the sender wants to send the number "5" as a secret message , The algorithm could change 5 pixel values in the one color image and in the receiver part , the algorithm will calculate the number of modified pixels.
+
+Use Case 1:
+
+Use Case 2: 
+In order for both parties to agree on the position of the data using Diffie Hellmann , An algorithm must be implemented. This Algorithm accepts the user message and change some pixels values of an Image. Pixel values modification is based on a specific criteria (not decided yet). For example , If the sender wants to send the number "5" as a secret message , The algorithm could change 5 pixel values in the one color image and in the receiver part , the algorithm will calculate the number of modified pixels.
 
 How it works:
 
