@@ -1,4 +1,4 @@
-# Project Title
+# Secret Pixels
 
 > Team Member 1 (Majd Hafiri) ,Team Member 2 (Vipin Koshy Thomas)
 
