@@ -34,7 +34,6 @@ In order for both parties to agree on the secret, An algorithm must be implement
 
 
 ## Tasks
-*This section is the most important because it gives us a sense of the scope of your project and forces you to think about the deliverables to which you'll hold yourself.*
 
 1. Setting the pixel area for embedding the secret identifier through register map.
 2. Sending the images bytes as stream
