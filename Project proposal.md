@@ -37,20 +37,12 @@ How it works:
 ## Tasks
 *This section is the most important because it gives us a sense of the scope of your project and forces you to think about the deliverables to which you'll hold yourself.*
 
-Break down your project into a sequence of small tasks that you can feasibly accomplish to incrementally build towards a complete working project.
+1. Setting the pixel area for embedding the secret identifier through register map.
+2. Sending the images bytes as stream
+3. udpating or manipulating the pixels
 
-Include at least three stretch goals. A *stretch goal* is an extension that you think would be really awesome, but would probably be outside the scope of the final project.
-
-What tasks do you think will be easy? What tasks do you think will be hard? Tedious? Trivial? Give us a sense of your current outlook on these project tasks.
-
-Annotate each of the tasks (including stretch goals) with an estimate for how long you believe the task will take you. If you're in a group, also annotate each task with the names of anyone responsible for the task.
-
-If you've already accomplished some of the tasks, make a note of it! If you're incorporating a final project for another class into this final project, you'll be held to a higher standard of quality and quantity, so make a note of that too.
-
-This task list isn't binding - you can change your mind, modify tasks, etc - but it's a good starting point to organize incremental development.
 
 
 ## Resources
-*This section is smaller and less vital than the others. If you're not using any external resources, you can leave this blank.*
-
-What external resources will you be working with? If you are working with a dataset, how will you acquire the data set? If you're publishing some project (e.g. web app), how will you host your project? If your project requires hardware, how will you get it? Are there any other resources you need to acquire before starting?
+PYNQ-Z2 
+Jupyter Notebook
