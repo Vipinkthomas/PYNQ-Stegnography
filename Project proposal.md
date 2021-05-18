@@ -46,5 +46,7 @@ In order for both parties to agree on the secret, An algorithm must be implement
 
 ## Resources
 PYNQ-Z2 
+
 Jupyter Notebook
+
 Xlinix Documention
