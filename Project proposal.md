@@ -18,8 +18,6 @@ Doing small changes to the values for some pixels of an image won't be possible 
 
 ## Implementation Strategy
 
-Use Case 1: 
-
 Use Case 1: once decided on the area for embedding information we can use follow bit manipulation technique 
 
 ![images_bg1](https://miro.medium.com/max/2006/0*JTnkzopCLv2cRLuY.jpg)
