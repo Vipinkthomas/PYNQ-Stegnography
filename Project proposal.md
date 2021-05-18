@@ -12,15 +12,7 @@ This program will be used by two parties, the sender and the receiver. The sende
 
 
 ## Implementation Strategy
- Changing the values of pixels by for instance two levels (ex. from 255 to 253 ) will be impossible for human eyes to detect the difference between the value 255 and 253 , but it is possible and easy to detect it using a specific software.
-*This section should be on the order of a few (2-3) short paragraphs, and captures your current program design.*
-
-At a high-level, how do you plan to implement your project? How does it incorporate Python?
-
-What are the main pieces that your projects breaks down into?
-How do these pieces connect to each other? If they share data in some way, how?
-
-Which Python packages do you plan to work with? How will these external modules connect to the code you write?
+In order for both parties to agree on a a secret message , An algorithm must be implemented. This Algorithm accepts the user message and change some pixels values of an Image. Pixel values modification is based on a specific criteria (not decided yet). For example , If the sender wants to send the number "5" as a secret message , The algorithm could change 5 pixel values in the one color image and in the receiver part , the algorithm will calculate the number of modified pixels.
 
 
 ## Tasks
