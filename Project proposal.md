@@ -1,4 +1,4 @@
-# Intelluctual Property Identifier for images or Secret information Sharing through images
+# Embedding information in images
 
 > Team Member 1 (Majd Hafiri) ,Team Member 2 (Vipin Koshy Thomas)
 
