@@ -20,6 +20,8 @@ Doing small changes to the values for some pixels of an image won't be possible 
 
 Use Case 1: 
 
+Use Case 1: once decided on the area for embedding information we can use follow bit manipulation technique 
+
 ![images_bg1](https://miro.medium.com/max/2006/0*JTnkzopCLv2cRLuY.jpg)
 ![images_bg2](https://miro.medium.com/max/875/0*XWlQVMlAQra2KHSB.jpg)
 
@@ -45,3 +47,4 @@ In order for both parties to agree on the secret, An algorithm must be implement
 ## Resources
 PYNQ-Z2 
 Jupyter Notebook
+Xlinix Documention
