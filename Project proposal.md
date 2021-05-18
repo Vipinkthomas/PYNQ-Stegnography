@@ -7,7 +7,8 @@ We want to create a product which helps in exchanging secret words inside Images
 
 
 ## Background
-This program will be used by two parties, the sender and the receiver. The sender and the receiver will be able to communicate secretly based on algorithm that manipulates the pixels of one colour image. By changing the values of some pixels in a way which is impossible for human eyes to find the difference but possible and very easy using a software, both parties will be able to communicate securely.
+This program will be used by two parties, the sender and the receiver. The sender and the receiver will be able to communicate secretly based on algorithm that manipulates the pixels of one colour image. Doing small changes to the values for some pixels of one colour image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
+
 
 
 ## Implementation Strategy
