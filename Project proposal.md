@@ -24,7 +24,8 @@ Doing small changes to the values for some pixels of one colour image won't be p
 
 ## Implementation Strategy
 
-Use Case 1:
+Use Case 1: 
+
 
 Use Case 2: 
 In order for both parties to agree on the secret, An algorithm must be implemented. This Algorithm accepts the user message and change some pixels values of an Image. Pixel values modification is based on a specific criteria (not decided yet). For example , If the sender wants to send the number "5" as a secret message , The algorithm could change 5 pixel values in the one color image and in the receiver part , the algorithm will calculate the number of modified pixels.
