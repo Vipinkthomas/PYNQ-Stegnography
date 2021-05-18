@@ -7,9 +7,7 @@
 
 
 ## Background
-*This section should be on the order of a few (1-2) paragraphs. If your project is highly domain-specific, this section may be longer.*
-
-Give us some context for your project. We may not be as informed about the topic as you are. Why are you excited about this topic? Do you have any experience with projects like this? What effects could this project have on the outside world?
+*This program will be used by two parties, the sender and the receiver. The sender and the receiver will be able to communicate secretly based on algorithm that manipulates the pixels of one colour image. 
 
 
 ## Implementation Strategy
