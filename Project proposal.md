@@ -7,17 +7,13 @@ We want to create an IP which can curb Intelluctual property theft using Stegnog
 
 
 ## Background
-**Use Case 1** : 
-Since Intelluctual property theft is becoming a common act in current world scenario, companies or authorities can use this ip to embed secret identifiers in their media productions. So that we can easily identify plagarized images by checking the byte data. Doing small changes to the values for some pixels of one colour image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
 
-
-**Use Case 2** : 
-Doing small changes to the values for some pixels of an image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software. These modified pixels represent a message somehow.
+Since Intelluctual property theft is becoming a common act in current world scenario, companies or authorities can use this ip to embbed secret identifiers in their media productions. So that they can easily identify plagarized images by checking the byte data. Doing small changes to the values for some pixels of the image won't be possible for human eyes to see those modified pixels but It is possible to do it on a software and hardware. These modified pixels represent a message somehow.
 
 
 ## Implementation Strategy
 
-Use Case 1: once decided on the area for embedding information we can use follow bit manipulation technique 
+once decided on the pixel positions for embedding information we can use the following bit manipulation technique:
 
 ![images_bg1](https://miro.medium.com/max/2006/0*JTnkzopCLv2cRLuY.jpg)
 ![images_bg2](https://miro.medium.com/max/875/0*XWlQVMlAQra2KHSB.jpg)
