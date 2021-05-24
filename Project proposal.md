@@ -13,7 +13,7 @@ Since Intelluctual property theft is becoming a common act in current world scen
 
 ## Implementation Strategy
 
-First of all, After passing the image to the FPGA , the FPGA will change some pixel values at some positions(will be specified by the user or randomly). The values of the chosen pixels (Least significant bit ) will be changed by some kind of mathematical operation.
+First of all, After passing the image to the FPGA , the FPGA will change some pixel values at some positions(will be specified by the user or randomly). The values of the chosen pixels (Least significant bit ) will be changed by some kind of mathematical operation. Then the modified image will be pushed back to the software in order to be sent or saved. Another overlay should be created which represents the the receiving part which verifies the ownership. This is done by passing the copy righted image to the FPGA as streams of pixels and calculate the number of modified pixels.
 
 once decided on the pixel positions for embedding information we can use the following bit manipulation technique:
 
