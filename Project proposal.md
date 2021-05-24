@@ -13,6 +13,8 @@ Since Intelluctual property theft is becoming a common act in current world scen
 
 ## Implementation Strategy
 
+First of all, After passing the image to the FPGA , the FPGA will change some pixel values at some positions(will be specified by the user or randomly). The values of the chosen pixels (Least significant bit ) will be changed by some kind of mathematical operation.
+
 once decided on the pixel positions for embedding information we can use the following bit manipulation technique:
 
 ![images_bg1](https://miro.medium.com/max/2006/0*JTnkzopCLv2cRLuY.jpg)
@@ -20,10 +22,6 @@ once decided on the pixel positions for embedding information we can use the fol
 
 
 image credits: [wikimedia](https://en.wikipedia.org/wiki/Bit_numbering#mediaviewer/File:Least_significant_bit.svg) , [technicalfoundation](https://technical-foundation.blogspot.com/2017/11/steganography-hide-data-in-images-with.html)
-
-
-Use Case 2: 
-In order for both parties to agree on the secret, An algorithm must be implemented. This Algorithm accepts the user message and change some pixels values of an Image. Pixel values modification is based on a specific criteria (not decided yet). For example , If the sender wants to send the number "5" as a secret message , The algorithm could change 5 pixel values in the image which makes these 5 pixels have a unique value. and in the receiver part , the algorithm will calculate the number of modified pixels and identify the sender message.
 
 
 
