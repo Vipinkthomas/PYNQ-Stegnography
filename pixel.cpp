@@ -20,12 +20,9 @@ void pixel(
 
 	pkt_t pkt;
 	din.read(pkt);
-
-	    for(int i=0; i<=3; i++){
             
-	        pkt.data[i] = 255; 
-            
-	    }
+	pkt.data= 255; 
+        
 
 	dout.write(pkt);
 }
