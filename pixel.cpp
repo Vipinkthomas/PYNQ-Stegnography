@@ -4,14 +4,14 @@
 
 using namespace std;
 
-typedef ap_axis<24,0,0,0> pkt_t; 
+typedef ap_axis<32,0,0,0> pkt_t; 
 
 
 
 void pixel(
 
 		hls::stream< pkt_t > &din,
-		hls::stream< pkt_t > &dout,
+		hls::stream< pkt_t > &dout
 
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
@@ -21,7 +21,7 @@ void pixel(
 	pkt_t pkt;
 	din.read(pkt);
 
-	    for(int i=0; i<=2; i++){
+	    for(int i=0; i<=3; i++){
             
 	        pkt.data[i] = 255; 
             
