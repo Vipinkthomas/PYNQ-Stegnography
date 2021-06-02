@@ -20,9 +20,12 @@ void pixel(
 
 	pkt_t pkt;
 	din.read(pkt);
-            
-	pkt.data= 255; 
-        
+    if(pkt.data == 1){
+		pkt.data = 215;
+	}
+	if(pkt.data == 215){
+		pkt.data = 1;
+	}       
 
 	dout.write(pkt);
 }
