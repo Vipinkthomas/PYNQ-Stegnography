@@ -9,8 +9,8 @@ typedef ap_axis<32,0,0,0> pkt_t;
 
 
 void pixel(
-		ap_int<32> w,
-        ap_int<32> len,
+		ap_int<32> &w,
+        ap_int<32> &len,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -23,10 +23,10 @@ void pixel(
 	pkt_t pkt;
 	din.read(pkt);
 
-	if(pkt.data){
+	// if(pkt.data){
 
-		len=len+1;
-	}
+	len++;
+	// }
 
 	if(len==w){
 		pkt.data*=2;
