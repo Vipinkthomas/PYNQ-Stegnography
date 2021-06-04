@@ -1,3 +1,5 @@
+//TODO -- Add mode 1 to modify pixels , 2 to read out the steganographic charachter
+
 #include <iostream>
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
