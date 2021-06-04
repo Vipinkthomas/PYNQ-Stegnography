@@ -17,6 +17,7 @@ void pixel(
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
 	#pragma HLS INTERFACE s_axilite port=position
+	#pragma HLS INTERFACE s_axilite port=stream_count
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
