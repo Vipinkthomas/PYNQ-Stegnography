@@ -35,7 +35,8 @@ void pixel(
 	}
 
 	}
-	else if(!flag){
+	
+	if(!flag){
 		count++;
 	}
 
