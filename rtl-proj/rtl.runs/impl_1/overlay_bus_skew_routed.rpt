@@ -1,0 +1,15 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
+| Date         : Fri Jun  4 02:07:24 2021
+| Host         : joan running 64-bit unknown
+| Command      : report_bus_skew -warn_on_violation -file overlay_bus_skew_routed.rpt -pb overlay_bus_skew_routed.pb -rpx overlay_bus_skew_routed.rpx
+| Design       : overlay
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+No bus skew constraints
+
