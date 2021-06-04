@@ -23,15 +23,19 @@ void pixel(
 
 	pkt_t pkt=din.read();
 	count_streams++;
-	if(count == position){
+	
+	if(count_streams > 3 * (position - 1) && count_streams <= 3 * (position)){
 		pkt.data -= 1;
-		flag = true;
-		count = 0;
+	}
+	// if(count == position){
+	// 	pkt.data -= 1;
+	// 	flag = true;
+	// 	count = 0;
 		
 
-	}else if(!flag){
-		count++;
-	}
+	// }else if(!flag){
+	// 	count++;
+	// }
 	
 	if (count_streams == stream_count){
 		count_streams = 0;
