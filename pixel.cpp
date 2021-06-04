@@ -25,13 +25,14 @@ void pixel(
 	pkt_t pkt=din.read();
 	count_streams++;
 
-	if(p_count==0){
-			count = 0;
-			flag=true;
-	}
+	
 	if(count == position || count == position+1 || count == position+2){
 		pkt.data -= 1;
 		p_count--;
+		if(p_count==0){
+			count = 0;
+			flag=true;
+	}
 
 	}
 	else if(!flag){
