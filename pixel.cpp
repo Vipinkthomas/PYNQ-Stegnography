@@ -30,7 +30,7 @@ void pixel(
 		pkt.data -= 1;
 		p_count--;
 		if(p_count==0){
-			count = 0;
+			count = -1;
 			flag=true;
 	}
 
