@@ -25,13 +25,11 @@ void pixel(
 
 	if(counter==w){
 		pkt.data*=2;
-	}
-	else if(counter< w){
-		count++;
-	}
-	else{
 		counter=0;
+
 	}
+	
+	count++;
 	
 
 
