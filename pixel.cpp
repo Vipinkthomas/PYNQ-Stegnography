@@ -5,7 +5,7 @@
 using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
-
+static int counter=0;
 
 
 void pixel(
@@ -19,9 +19,7 @@ void pixel(
 	#pragma HLS INTERFACE axis port=dout
 
 	pkt_t pkt=din.read();
-	static int count=0;
 
-	
 
 	if(counter==w){
 		pkt.data*=2;
@@ -29,7 +27,7 @@ void pixel(
 
 	}
 	else{
-	count++;
+	counter++;
 	}
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array) 
 
