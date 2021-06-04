@@ -5,7 +5,7 @@
 using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
-static int counter=0;
+static int counter = 0;
 
 
 void pixel(
