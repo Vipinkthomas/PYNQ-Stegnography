@@ -6,6 +6,7 @@ using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
 static int counter = 0;
+static bool flag=false;
 
 
 void pixel(
@@ -23,10 +24,11 @@ void pixel(
 
 	if(counter==w){
 		pkt.data*=2;
+		flag=true;
 		counter=0;
 
 	}
-	else{
+	else if(!flag){
 	counter++;
 	}
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array) 
