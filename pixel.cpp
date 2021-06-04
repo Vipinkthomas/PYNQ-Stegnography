@@ -39,7 +39,7 @@ void pixel(
 	
 	if (count_streams == stream_count){
 		count_streams = 0;
-		flag = false;
+		//flag = false;
 	}
 
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array) 
