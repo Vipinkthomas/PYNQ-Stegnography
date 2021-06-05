@@ -7,6 +7,9 @@ using namespace std;
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
 
+int toAscii(int number) {
+   return '0' + number;
+}
 
 void pixel(
 		ap_int<32> position1,
@@ -26,9 +29,8 @@ void pixel(
 
 	pkt_t pkt=din.read();
 
-	
-	if((position1+3*count_streams*w) < position2 || (position2-3*count_streams*w) > position1){
-		pkt.data -= 1;
+	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
+		pkt.data=toAscii(pkt.data)
 	}
 	
 	count_streams++;
@@ -38,9 +40,11 @@ void pixel(
 	}
 
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array)
-
+	//(count_streams==(position1+3*count_streams*w))&&((position1+3*count_streams*w) < position2) || (count_streams2==(position1
+	//+3*count_streams*w)) && ((position2-3*count_streams*w) > position1)
 
 	dout.write(pkt);
 
 }
+
 
