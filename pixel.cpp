@@ -69,7 +69,7 @@ void pixel(
 
 void stegno(char c){
     
-
+    // to check
 	charIn=toAscii(character);
 	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
 		addNum=charIn%10;
@@ -80,19 +80,14 @@ void stegno(char c){
     
 }
 
-char stegnoDcrypt(int data){
+long long stegnoDcrypt(int data){
 
-	
-    //int arr[8]={255,254,253,252,251,250,249,248};
-    
     decrpyt=convert(data)%10;
-    printf("%d\n",decrpyt);
-    
+
     asciiNum=asciiNum*10+decrpyt;
 	
 	asciiVal= convertBinInt(asciiNum);
-	printf("%d\n",asciiVal);
-    return (char)asciiVal;
+    return asciiVal;
     
 }
     
