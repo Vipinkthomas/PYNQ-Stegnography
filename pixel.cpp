@@ -5,20 +5,22 @@
 using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
-static int count = 0;
 static int count_streams = 0;
-static bool flag = false;
-static int p_count = 3;
+
 
 void pixel(
-		ap_int<32> position,
-		ap_int<32> stream_count,
+		ap_int<32> position1,
+		ap_int<32> position2,
+		ap_int<32> w,
+		ap_int<32> h,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
-	#pragma HLS INTERFACE s_axilite port=position
-	#pragma HLS INTERFACE s_axilite port=stream_count
+	#pragma HLS INTERFACE s_axilite port=position1
+	#pragma HLS INTERFACE s_axilite port=position2
+	#pragma HLS INTERFACE s_axilite port=w
+	#pragma HLS INTERFACE s_axilite port=h
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
@@ -26,25 +28,13 @@ void pixel(
 	count_streams++;
 
 	
-	if(count == position || count == position+1 || count == position+2){
+	if((position1+3*count_streams*w) < position2 || (position2-3*count_streams*w) > position1){
 		pkt.data -= 1;
-		p_count--;
-		if(p_count==0){
-			count = -1;
-			flag=true;
 	}
 
-	}
-	
-	if(!flag){
-		count++;
-	}
 
-	if (count_streams == stream_count){
+	if (count_streams == w*h*3){
 		count_streams = 0;
-		flag = false;
-		p_count=3;
-		count = 0;
 	}
 
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array)
