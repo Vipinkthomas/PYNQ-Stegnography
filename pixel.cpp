@@ -1,3 +1,4 @@
+//TODO : Add 2 modes, one for making fpga manipulate pixels and one mode for read out the steganographic charachter
 #include <iostream>
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
@@ -5,9 +6,7 @@
 using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
-static int count = 0;
 static int count_streams = 0;
-static bool flag = false;
 
 void pixel(
 		ap_int<32> position,
@@ -27,23 +26,11 @@ void pixel(
 	if(count_streams > 3 * (position - 1) && count_streams <= 3 * (position)){
 		pkt.data -= 1;
 	}
-	// if(count == position){
-	// 	pkt.data -= 1;
-	// 	flag = true;
-	// 	count = 0;
-		
 
-	// }else if(!flag){
-	// 	count++;
-	// }
-	
 	if (count_streams == stream_count){
 		count_streams = 0;
-		//flag = false;
+		
 	}
-
-	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array) 
-
 
 	dout.write(pkt);
 
