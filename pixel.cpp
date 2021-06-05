@@ -7,11 +7,16 @@ using namespace std;
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
 static long long charIn=0;
+static int addNum=0;
+static int decrpyt=0;
+static long long asciiNum=0;
+static int asciiVal=0;
 
-long long convert(int n) 
+long long convert(int n); 
 long long toAscii(chr number);
 int convertBinInt(long long n);
-
+char stegnoDcrypt(int data);
+void stegno(char c);
 
 void pixel(
 		ap_int<32> position1,
@@ -28,21 +33,26 @@ void pixel(
 	#pragma HLS INTERFACE s_axilite port=w
 	#pragma HLS INTERFACE s_axilite port=h
 	#pragma HLS INTERFACE s_axilite port=character
+	#pragma HLS INTERFACE s_axilite port=selector  //switch for encrypt and decrypt
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
-
-	charIn=toAscii(character)
-
 	pkt_t pkt=din.read();
 
-	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
-		addNum=charIn%10;
-		charIn=(int)charIn/10;
-		pkt.data=convertBinInt((convert(pkt.data)/10)*10+addNum);
-		
-	}
-	
+	switch(selector)
+    {
+        case 0:
+            stegno(character);
+            break;
+
+        case 1:
+            stegnoDecrypt();
+            break;
+
+        default:
+            break;
+    }
+
 	count_streams++;
 
 	if (count_streams == w*h*3){
@@ -56,6 +66,36 @@ void pixel(
 	dout.write(pkt);
 
 }
+
+void stegno(char c){
+    
+
+	charIn=toAscii(character);
+	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
+		addNum=charIn%10;
+		charIn=(int)charIn/10;
+		pkt.data=convertBinInt((convert(pkt.data)/10)*10+addNum);
+		
+	}
+    
+}
+
+char stegnoDcrypt(int data){
+
+	
+    //int arr[8]={255,254,253,252,251,250,249,248};
+    
+    decrpyt=convert(data)%10;
+    printf("%d\n",decrpyt);
+    
+    asciiNum=asciiNum*10+decrpyt;
+	
+	asciiVal= convertBinInt(asciiNum);
+	printf("%d\n",asciiVal);
+    return (char)asciiVal;
+    
+}
+    
 
 long long convert(int n) {
     long long bin = 0;
