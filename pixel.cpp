@@ -6,16 +6,19 @@ using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
+static long long charIn=1;
 
-int toAscii(int number) {
-   return '0' + number;
-}
+long long convert(int n) 
+long long toAscii(chr number);
+int convertBinInt(long long n);
+
 
 void pixel(
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> w,
 		ap_int<32> h,
+		ap_int<32> character,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -24,13 +27,20 @@ void pixel(
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=w
 	#pragma HLS INTERFACE s_axilite port=h
+	#pragma HLS INTERFACE s_axilite port=character
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
+
+
+	charIn=toAscii(character)
 
 	pkt_t pkt=din.read();
 
 	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
-		pkt.data=toAscii(pkt.data)
+		addNum=charIn%10;
+		charIn=(int)charIn/10;
+		pkt.data=convertBinInt((convert(pkt.data)/10)*10+addNum);
+		
 	}
 	
 	count_streams++;
@@ -47,4 +57,31 @@ void pixel(
 
 }
 
+long long convert(int n) {
+    long long bin = 0;
+    int rem, i = 1, step = 1;
+    while (n != 0) {
+        rem = n % 2;
+        n /= 2;
+        bin += rem * i;
+        i *= 10;
+    }
+    return bin;
+}
 
+int convertBinInt(long long n) {
+    int dec = 0, i = 0, rem;
+    while (n != 0) {
+        rem = n % 10;
+        n /= 10;
+        dec += rem * pow(2, i);
+        ++i;
+    }
+    return dec;
+}
+
+long long toAscii(char c) {
+    int n=(int)c;
+    long long bin = convert(n);
+    return bin;     
+}
