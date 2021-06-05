@@ -25,13 +25,13 @@ void pixel(
 	#pragma HLS INTERFACE axis port=dout
 
 	pkt_t pkt=din.read();
-	count_streams++;
 
 	
 	if((position1+3*count_streams*w) < position2 || (position2-3*count_streams*w) > position1){
 		pkt.data -= 1;
 	}
-
+	
+	count_streams++;
 
 	if (count_streams == w*h*3){
 		count_streams = 0;
