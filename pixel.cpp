@@ -21,6 +21,10 @@ static string vv = "";
 static string vvv = "";
 static int cnnt = 0;
 
+int decimalToBinary(int N);
+string DecToHex(int decimalNum);
+void hexToBin(string hexa);
+
 
 int decimalToBinary(int N)
 {
