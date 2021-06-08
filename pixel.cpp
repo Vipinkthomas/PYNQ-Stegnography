@@ -2,9 +2,9 @@
 #include <iostream>
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
-#include <cmath>
+// #include <cmath>
 
-#define ull unsigned long long int
+// #define ull unsigned long long int
 
 using namespace std;
 
