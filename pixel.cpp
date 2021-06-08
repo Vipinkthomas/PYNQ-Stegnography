@@ -54,7 +54,7 @@ void pixel(
 		// jjj = s[0];
 		// s12 = jj + jjj;
 
-		char r = 'r';
+		char r[2] = {'r','k'};
 		
 
 		// hexToBin(s12);
