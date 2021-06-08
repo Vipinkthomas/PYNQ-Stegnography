@@ -47,8 +47,8 @@ void pixel(
 	if(count_streams == 0){
 		
 		// DecToHex(charachter_in_decimal);
-		// jj = "d"//s[1];
-		// jjj = "g"//s[0];
+		jj = s[1];
+		jjj = s[0];
 		// s12 = jj + jjj;
 
 		// hexToBin(s12);
