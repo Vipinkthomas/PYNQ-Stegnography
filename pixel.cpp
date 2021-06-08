@@ -3,7 +3,7 @@
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
 #include <cmath>
-#include <string.h>
+#include <string>
 
 #define ull unsigned long long int
 
