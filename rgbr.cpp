@@ -123,35 +123,55 @@ int main(){
     int B1 = 90;
     int R2 = 230;
 
-    // cout<<int(c)<<endl;
-    
-    // int dec_num, r;
-    // string hexdec_num="";
-    // char hex[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-	
-	// dec_num = 220;
-		
-    //     while(dec_num>0)
-    //     {
-    //         r = dec_num % 16;
-    //         hexdec_num = hex[r] + hexdec_num;
-    //         dec_num = dec_num/16;
-    //     }
-    //     cout<<" The hexadecimal number is : "<<hexdec_num[0]<<"\n";
- 
-    // cout << decimalToBinary(N) <<endl;
-    // hexToBin("a");
-    // char s[2];
-    // s = DecToHex(33);
+    int rgbr[4] = {R1,G1,B1,R2};
+  
     string cc = s;
     cout<<DecToHex(61)<<endl;
-    // hexToBin(h);
-    // cout<<s[0]<<endl;
+
     std::string s12{s[1], s[0]};
     
     cout<<s12<<endl;
 
     hexToBin(s12);
     cout<<l<<endl;
+
+    int cnt = 0;
+    int counter = 0;
+    string arr[4];
+    string v = "";
+    string vv = "";
+    string vvv = "";
+
+    for (int z=0 ; z<8; z+=2){
+       
+        v = l[z];
+        vv = l[z+1];
+        vvv = v+vv;
+
+        cout<<vvv<<endl;
+        arr[cnt] = vvv;
+        
+        cnt++;
+        
+    }
+
+    for (int g=0; g<4 ; g++){
+        if(arr[g] == "01"){
+            rgbr[g] -= 1;             //must check if rgbr value is zero // add another condition
+        }else if(arr[g] == "10"){
+            rgbr[g] -= 2;
+        }else if(arr[g] == "11"){
+            rgbr[g] -= 3;
+        }
+    }
+
+    cout<<rgbr[0]<<" "<<rgbr[1]<<" "<<rgbr[2]<<" "<<rgbr[3]<<endl;
+    
+    
+
+    //converting to binary to get the lsb's
+
+    cout<<decimalToBinary(rgbr[3]);
+
     return 0;
 }
