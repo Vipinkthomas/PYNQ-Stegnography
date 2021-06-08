@@ -54,14 +54,14 @@ void pixel(
 		// hexToBin(s12);
 
 
-    for (int z=0 ; z<8; z+=2){
+    // for (int z=0 ; z<8; z+=2){
        
-        v = l[z];
-        vv = l[z+1];
-        vvv = v+vv;
-        arr[cnnt] = vvv;
-        cnnt++; 
-    }
+    //     v = l[z];
+    //     vv = l[z+1];
+    //     vvv = v+vv;
+    //     arr[cnnt] = vvv;
+    //     cnnt++; 
+    // }
 
 
 	}
