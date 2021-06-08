@@ -46,7 +46,7 @@ void pixel(
             break;
 
         case 1:
-            stegnoDecrypt();
+            stegnoDecrypt(pkt.data);
             break;
 
         default:
@@ -70,7 +70,7 @@ void pixel(
 void stegno(char c){
     
     // to check
-	charIn=toAscii(character);
+	charIn=toAscii(c);
 	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
 		addNum=charIn%10;
 		charIn=(int)charIn/10;
@@ -85,10 +85,8 @@ long long stegnoDcrypt(int data){
     decrpyt=convert(data)%10;
 
     asciiNum=asciiNum*10+decrpyt;
+    asciiVal= convertBinInt(asciiNum);
 	
-	asciiVal= convertBinInt(asciiNum);
-    return asciiVal;
-    
 }
     
 
