@@ -1,89 +1,89 @@
 //TODO : Add 2 modes, one for making fpga manipulate pixels and one mode for read out the steganographic charachter
-#include <iostream>
-#include <hls_stream.h>
-#include <ap_axi_sdata.h>
+// #include <iostream>
+// #include <hls_stream.h>
+// #include <ap_axi_sdata.h>
 // #include <cmath>
 
 // #define ull unsigned long long int
 
-using namespace std;
+// using namespace std;
 
-typedef ap_axis<32,0,0,0> pkt_t;
-static int count_streams = 0;
-static char s[2];
-static string l = "";
-static string s12 = "";
-static string jj = "";
-static string jjj = "";
-static string arr[4];
-static string v = "";
-static string vv = "";
-static string vvv = "";
-static int cnnt = 0;
+// typedef ap_axis<32,0,0,0> pkt_t;
+// static int count_streams = 0;
+// static char s[2];
+// static string l = "";
+// static string s12 = "";
+// static string jj = "";
+// static string jjj = "";
+// static string arr[4];
+// static string v = "";
+// static string vv = "";
+// static string vvv = "";
+// static int cnnt = 0;
 
-// int decimalToBinary(int N);
-// string DecToHex(int decimalNum);
-// void hexToBin(string hexa);
-
-
+// // int decimalToBinary(int N);
+// // string DecToHex(int decimalNum);
+// // void hexToBin(string hexa);
 
 
-void pixel(
-		ap_int<32> position,
-		ap_int<32> charachter_in_decimal,
-		ap_int<32> stream_count,
-		hls::stream< pkt_t > &din,
-		hls::stream< pkt_t > &dout
-) {
-	#pragma HLS INTERFACE ap_ctrl_none port=return
-	#pragma HLS INTERFACE s_axilite port=position
-	#pragma HLS INTERFACE s_axilite port=charachter_in_decimal
-	#pragma HLS INTERFACE s_axilite port=stream_count
-	#pragma HLS INTERFACE axis port=din
-	#pragma HLS INTERFACE axis port=dout
 
-	pkt_t pkt=din.read();
 
-	if(count_streams == 0){
+// void pixel(
+// 		ap_int<32> position,
+// 		ap_int<32> charachter_in_decimal,
+// 		ap_int<32> stream_count,
+// 		hls::stream< pkt_t > &din,
+// 		hls::stream< pkt_t > &dout
+// ) {
+// 	#pragma HLS INTERFACE ap_ctrl_none port=return
+// 	#pragma HLS INTERFACE s_axilite port=position
+// 	#pragma HLS INTERFACE s_axilite port=charachter_in_decimal
+// 	#pragma HLS INTERFACE s_axilite port=stream_count
+// 	#pragma HLS INTERFACE axis port=din
+// 	#pragma HLS INTERFACE axis port=dout
+
+// 	pkt_t pkt=din.read();
+
+// 	if(count_streams == 0){
 		
-		DecToHex(charachter_in_decimal);
-		jj = s[1];
-		jjj = s[0];
-		s12 = jj + jjj;
+// 		DecToHex(charachter_in_decimal);
+// 		jj = s[1];
+// 		jjj = s[0];
+// 		s12 = jj + jjj;
 
-		hexToBin(s12);
+// 		hexToBin(s12);
 
 
-    for (int z=0 ; z<8; z+=2){
+//     for (int z=0 ; z<8; z+=2){
        
-        v = l[z];
-        vv = l[z+1];
-        vvv = v+vv;
-        arr[cnnt] = vvv;
-        cnnt++; 
-    }
+//         v = l[z];
+//         vv = l[z+1];
+//         vvv = v+vv;
+//         arr[cnnt] = vvv;
+//         cnnt++; 
+//     }
 
 
-	}
+// 	}
 	
 	
-	if(count_streams <= 4){
-		for (int g=0; g<4 ; g++){
-			if(arr[count_streams] == "01"){
-				pkt.data -= 1;             //must check if rgbr value is zero // add another condition
-			}else if(arr[count_streams] == "10"){
-				pkt.data -= 2;
-			}else if(arr[count_streams] == "11"){
-				pkt.data -= 3;
-			}
-    }
+// 	if(count_streams <= 4){
+// 		for (int g=0; g<4 ; g++){
+// 			if(arr[count_streams] == "01"){
+// 				pkt.data -= 1;             //must check if rgbr value is zero // add another condition
+// 			}else if(arr[count_streams] == "10"){
+// 				pkt.data -= 2;
+// 			}else if(arr[count_streams] == "11"){
+// 				pkt.data -= 3;
+// 			}
+//     }
 		
-	}
-	count_streams++;
+// 	}
+// 	count_streams++;
 
-	dout.write(pkt);
+// 	dout.write(pkt);
 
-}
+// }
 //****************************************************************************************************
 // int decimalToBinary(int N)
 // {
@@ -219,39 +219,39 @@ void pixel(
 
 
 ///////////////////////
-// #include <iostream>
-// #include <hls_stream.h>
-// #include <ap_axi_sdata.h>
+#include <iostream>
+#include <hls_stream.h>
+#include <ap_axi_sdata.h>
 
-// using namespace std;
+using namespace std;
 
-// typedef ap_axis<32,0,0,0> pkt_t;
-// static int count_streams = 0;
+typedef ap_axis<32,0,0,0> pkt_t;
+static int count_streams = 0;
 
-// void pixel(
-// 		ap_int<32> position,
-// 		ap_int<32> stream_count,
-// 		hls::stream< pkt_t > &din,
-// 		hls::stream< pkt_t > &dout
-// ) {
-// 	#pragma HLS INTERFACE ap_ctrl_none port=return
-// 	#pragma HLS INTERFACE s_axilite port=position
-// 	#pragma HLS INTERFACE s_axilite port=stream_count
-// 	#pragma HLS INTERFACE axis port=din
-// 	#pragma HLS INTERFACE axis port=dout
+void pixel(
+		ap_int<32> position,
+		ap_int<32> stream_count,
+		hls::stream< pkt_t > &din,
+		hls::stream< pkt_t > &dout
+) {
+	#pragma HLS INTERFACE ap_ctrl_none port=return
+	#pragma HLS INTERFACE s_axilite port=position
+	#pragma HLS INTERFACE s_axilite port=stream_count
+	#pragma HLS INTERFACE axis port=din
+	#pragma HLS INTERFACE axis port=dout
 
-// 	pkt_t pkt=din.read();
-// 	count_streams++;
+	pkt_t pkt=din.read();
+	count_streams++;
 	
-// 	if(count_streams > 3 * (position - 1) && count_streams <= 3 * (position)){
-// 		pkt.data -= 1;
-// 	}
+	if(count_streams > 3 * (position - 1) && count_streams <= 3 * (position)){
+		pkt.data -= 1;
+	}
 
-// 	if (count_streams == stream_count){
-// 		count_streams = 0;
+	if (count_streams == stream_count){
+		count_streams = 0;
 		
-// 	}
+	}
 
-// 	dout.write(pkt);
+	dout.write(pkt);
 
-// }
+}
