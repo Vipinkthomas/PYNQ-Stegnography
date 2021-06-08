@@ -3,7 +3,7 @@
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
 #include <cmath>
-#include <string>
+
 
 #define ull unsigned long long int
 
@@ -11,20 +11,16 @@ using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
-static string s[2];
-static string l = "";
-static string s12 = "";
-static string jj = "";
-static string jjj = "";
-static string arr[4];
-static string v = "";
-static string vv = "";
-static string vvv = "";
+static char s[2];
+static char x[2];
+static char hexbin[8]={'0','0','0','0','0','0','0','0'};
+
 static int cnnt = 0;
 
-// // int decimalToBinary(int N);
-// // string DecToHex(int decimalNum);
-// // void hexToBin(string hexa);
+
+void DecToHex(int decimalNum);
+void hexToBin(char hexa[2]);
+void setBin(int i, char a, char b, char c, char d);
 
 
 
@@ -46,160 +42,118 @@ void pixel(
 	pkt_t pkt=din.read();
 
 	if(count_streams == 0){
+
+		DecToHex(charachter_in_decimal);
+		x[0] = s[1];
+   		x[1] = s[0];
 		
-		// DecToHex(charachter_in_decimal);
-		// std::string jjjj;
-		// jjjj = "gk";
-		//s[1];
-		// jjj = s[0];
-		// s12 = jj + jjj;
-
-		char r[2] = {'r','k'};
-		
-
-		// hexToBin(s12);
-
-
-    // for (int z=0 ; z<8; z+=2){
-       
-    //     v = l[z];
-    //     vv = l[z+1];
-    //     vvv = v+vv;
-    //     arr[cnnt] = vvv;
-    //     cnnt++; 
-    // }
-
+		hexToBin(x);
 
 	}
 	
 	
-	// if(count_streams <= 4){
-	// 	for (int g=0; g<4 ; g++){
-	// 		if(arr[count_streams] == "01"){
-	// 			pkt.data -= 1;             //must check if rgbr value is zero // add another condition
-	// 		}else if(arr[count_streams] == "10"){
-	// 			pkt.data -= 2;
-	// 		}else if(arr[count_streams] == "11"){
-	// 			pkt.data -= 3;
-	// 		}
-    // 	}
+	if(count_streams < 4){
+
+       
+        if(hexbin[cnnt] == '0' && hexbin[cnnt+1] == '1'){
+            pkt.data -= 1;             //must check if rgbr value is zero // add another condition
+        }else if(hexbin[cnnt] == '1' && hexbin[cnnt+1] == '0'){
+            pkt.data -= 2;
+        }else if(hexbin[cnnt] == '1' && hexbin[cnnt+1] == '1'){
+            pkt.data -= 3;
+        }
 		
-	// }
+        
+    }
+
+
+	cnnt += 2;
 	count_streams++;
 
 	dout.write(pkt);
 
 }
-//****************************************************************************************************
-// int decimalToBinary(int N)
-// {
- 
-//     // To store the binary number
-//     ull B_Number = 0;
-//     int cnt = 0;
-//     while (N != 0) {
-//         int rem = N % 2;
-//         ull c = pow(10, cnt);
-//         B_Number += rem * c;
-//         N /= 2;
-//         // Count used to store exponent value
-//         cnt++;
-//     }
- 
-//     return B_Number;
-// }
 
-// string DecToHex(int decimalNum)
-// {
-//      int rem, i=0;
-//     char hexaDecimalNum[2];
-    
-//     while(decimalNum!=0)
-//     {
-//         rem = decimalNum%16;
-//         if(rem<10)
-//             rem = rem+48;
-//         else
-//             rem = rem+55;
-//         hexaDecimalNum[i] = rem;
-//         i++;
-//         decimalNum = decimalNum/16;
-//     }
-    
-//     for(i=i-1; i>=0; i--)
-//         s[i] = hexaDecimalNum[i];
-    
-//     return hexaDecimalNum;
-// }
 
-// void hexToBin(string hexa){ 
-//     long int i = 0;
+void DecToHex(int decimalNum)
+{
+     int rem, i=0;
+    char hexaDecimalNum[2];
     
-//    while (hexa[i]){
-//       switch (hexa[i]){
-//       case '0':
-//          l +=  "0000";
-//          break;
-//       case '1':
-//          l +=  "0001";
-//          break;
-//       case '2':
-//          l +=  "0010";
-//          break;
-//       case '3':
-//          l +=  "0011";
-//          break;
-//       case '4':
-//          l +=  "0100";
-//          break;
-//       case '5':
-//          l +=  "0101";
-//          break;
-//       case '6':
-//          l +=  "0110";
-//          break;
-//       case '7':
-//          l +=  "0111";
-//          break;
-//       case '8':
-//          l +=  "1000";
-//          break;
-//       case '9':
-//          l +=  "1001";
-//          break;
-//       case 'A':
-//       case 'a':
-//          l +=  "1010";
-//          break;
-//       case 'B':
-//       case 'b':
-//          l +=  "1011";
-//          break;
-//       case 'C':
-//       case 'c':
-//          l +=  "1100";
-//          break;
-//       case 'D':
-//       case 'd':
-//          l +=  "1101";
-//          break;
-//       case 'E':
-//       case 'e':
-//          l +=  "1110";
-//          break;
-//       case 'F':
-//       case 'f':
-//          l +=  "1111";
-//          break;
-//       default:
-//         cout<<"S";
-         
-//       }
-//    i++;
-//    }
+    while(decimalNum!=0)
+    {
+        rem = decimalNum%16;
+        if(rem<10)
+            rem = rem+48;
+        else
+            rem = rem+55;
+        hexaDecimalNum[i] = rem;
+        i++;
+        decimalNum = decimalNum/16;
+    }
+    
+    for(i=i-1; i>=0; i--)
+        s[i] = hexaDecimalNum[i];
+    
+   //  return hexaDecimalNum;
+}
 
-// }
-//********************************************************************************************
+
+void setBin(int i, char a, char b, char c, char d){
+   if(i == 0){
+	hexbin[0] = a;
+	hexbin[1] = b;
+	hexbin[2] = c;
+	hexbin[3] = d;
+   }else{
+      hexbin[4] = a;
+      hexbin[5] = b;
+      hexbin[6] = c;
+      hexbin[7] = d;
+   }
+
+}
+void hexToBin(char hexa[2]){ 
+   
+   long int i = 0;
+   while(hexa[i]){
+   if(hexa[i] == '0'){
+      setBin(i,'0','0','0','0');
+   }else if(hexa[i] == '1'){
+      setBin(i,'0','0','0','1');
+   }else if(hexa[i] == '2'){
+      setBin(i,'0','0','1','0');
+   }else if(hexa[i] == '3'){
+      setBin(i,'0','0','1','1');
+   }else if(hexa[i] == '4'){
+      setBin(i,'0','1','0','0');
+   }else if(hexa[i] == '5'){
+      setBin(i,'0','1','0','1');
+   }else if(hexa[i] == '6'){
+      setBin(i,'0','1','1','0');
+   }else if(hexa[i] == '7'){
+      setBin(i,'0','1','1','1');
+   }else if(hexa[i] == '8'){
+      setBin(i,'1','0','0','0');
+   }else if(hexa[i] == '9'){
+      setBin(i,'1','0','0','1');
+   }else if(hexa[i] == 'a' || hexa[i] == 'A'){
+      setBin(i,'1','0','1','0');
+   }else if(hexa[i] == 'b' || hexa[i] == 'B'){
+      setBin(i,'1','0','1','1');
+   }else if(hexa[i] == 'c' || hexa[i] == 'C'){
+      setBin(i,'1','1','0','0');
+   }else if(hexa[i] == 'd' || hexa[i] == 'D'){
+      setBin(i,'1','1','0','1');
+   }else if(hexa[i] == 'e' || hexa[i] == 'E'){
+      setBin(i,'1','1','1','0');
+   }else if(hexa[i] == 'f' || hexa[i] == 'F'){
+      setBin(i,'1','1','1','1');
+   }
+   
+   i++;
+   }
+   }
 
 
 
