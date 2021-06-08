@@ -10,7 +10,7 @@ using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
-static char s[2] = {"a","b"};
+static string s[2];
 static string l = "";
 static string s12 = "";
 static string jj = "";
