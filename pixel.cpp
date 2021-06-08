@@ -44,27 +44,27 @@ void pixel(
 
 	pkt_t pkt=din.read();
 
-	//if(count_streams == 0){
+	if(count_streams == 0){
 		
 		// DecToHex(charachter_in_decimal);
-		// jj = s[1];
-		// jjj = s[0];
-		// s12 = jj + jjj;
+		jj = s[1];
+		jjj = s[0];
+		s12 = jj + jjj;
 
 		// hexToBin(s12);
 
 
-    // for (int z=0 ; z<8; z+=2){
+    for (int z=0 ; z<8; z+=2){
        
-    //     v = l[z];
-    //     vv = l[z+1];
-    //     vvv = v+vv;
-    //     arr[cnnt] = vvv;
-    //     cnnt++; 
-    // }
+        v = l[z];
+        vv = l[z+1];
+        vvv = v+vv;
+        arr[cnnt] = vvv;
+        cnnt++; 
+    }
 
 
-	//}
+	}
 	
 	
 	// if(count_streams <= 4){
