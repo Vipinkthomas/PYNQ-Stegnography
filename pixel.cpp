@@ -114,45 +114,45 @@ void setBin(int i, char a, char b, char c, char d){
 
 }
 void hexToBin(char hexa[2]){ 
+   cout<<"yes"<<endl;
+   // long int i = 0;
+   // while(hexa[i]){
+   // if(hexa[i] == '0'){
+   //    setBin(i,'0','0','0','0');
+   // }else if(hexa[i] == '1'){
+   //    setBin(i,'0','0','0','1');
+   // }else if(hexa[i] == '2'){
+   //    setBin(i,'0','0','1','0');
+   // }else if(hexa[i] == '3'){
+   //    setBin(i,'0','0','1','1');
+   // }else if(hexa[i] == '4'){
+   //    setBin(i,'0','1','0','0');
+   // }else if(hexa[i] == '5'){
+   //    setBin(i,'0','1','0','1');
+   // }else if(hexa[i] == '6'){
+   //    setBin(i,'0','1','1','0');
+   // }else if(hexa[i] == '7'){
+   //    setBin(i,'0','1','1','1');
+   // }else if(hexa[i] == '8'){
+   //    setBin(i,'1','0','0','0');
+   // }else if(hexa[i] == '9'){
+   //    setBin(i,'1','0','0','1');
+   // }else if(hexa[i] == 'a' || hexa[i] == 'A'){
+   //    setBin(i,'1','0','1','0');
+   // }else if(hexa[i] == 'b' || hexa[i] == 'B'){
+   //    setBin(i,'1','0','1','1');
+   // }else if(hexa[i] == 'c' || hexa[i] == 'C'){
+   //    setBin(i,'1','1','0','0');
+   // }else if(hexa[i] == 'd' || hexa[i] == 'D'){
+   //    setBin(i,'1','1','0','1');
+   // }else if(hexa[i] == 'e' || hexa[i] == 'E'){
+   //    setBin(i,'1','1','1','0');
+   // }else if(hexa[i] == 'f' || hexa[i] == 'F'){
+   //    setBin(i,'1','1','1','1');
+   // }
    
-   long int i = 0;
-   while(hexa[i]){
-   if(hexa[i] == '0'){
-      setBin(i,'0','0','0','0');
-   }else if(hexa[i] == '1'){
-      setBin(i,'0','0','0','1');
-   }else if(hexa[i] == '2'){
-      setBin(i,'0','0','1','0');
-   }else if(hexa[i] == '3'){
-      setBin(i,'0','0','1','1');
-   }else if(hexa[i] == '4'){
-      setBin(i,'0','1','0','0');
-   }else if(hexa[i] == '5'){
-      setBin(i,'0','1','0','1');
-   }else if(hexa[i] == '6'){
-      setBin(i,'0','1','1','0');
-   }else if(hexa[i] == '7'){
-      setBin(i,'0','1','1','1');
-   }else if(hexa[i] == '8'){
-      setBin(i,'1','0','0','0');
-   }else if(hexa[i] == '9'){
-      setBin(i,'1','0','0','1');
-   }else if(hexa[i] == 'a' || hexa[i] == 'A'){
-      setBin(i,'1','0','1','0');
-   }else if(hexa[i] == 'b' || hexa[i] == 'B'){
-      setBin(i,'1','0','1','1');
-   }else if(hexa[i] == 'c' || hexa[i] == 'C'){
-      setBin(i,'1','1','0','0');
-   }else if(hexa[i] == 'd' || hexa[i] == 'D'){
-      setBin(i,'1','1','0','1');
-   }else if(hexa[i] == 'e' || hexa[i] == 'E'){
-      setBin(i,'1','1','1','0');
-   }else if(hexa[i] == 'f' || hexa[i] == 'F'){
-      setBin(i,'1','1','1','1');
-   }
-   
-   i++;
-   }
+   // i++;
+   // }
    }
 
 
