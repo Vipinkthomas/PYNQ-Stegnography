@@ -57,14 +57,16 @@ void pixel(
 
 	if (count_streams == w*h*3){
 		count_streams = 0;
+        asciiVal= convertBinInt(asciiNum);
+        pkt.data=asciiVal
+        dout.write(pkt);
 	}
 
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array)
 	//(count_streams==(position1+3*count_streams*w))&&((position1+3*count_streams*w) < position2) || (count_streams2==(position1
 	//+3*count_streams*w)) && ((position2-3*count_streams*w) > position1)
 
-	dout.write(pkt);
-
+    dout.write(pkt);
 }
 
 void stegno(char c){
@@ -85,7 +87,6 @@ long long stegnoDcrypt(int data){
     decrpyt=convert(data)%10;
 
     asciiNum=asciiNum*10+decrpyt;
-    asciiVal= convertBinInt(asciiNum);
 	
 }
     
