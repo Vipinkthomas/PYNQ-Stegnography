@@ -1,6 +1,7 @@
 #include <iostream>
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
+#include <math.h>
 
 using namespace std;
 
@@ -24,6 +25,7 @@ void pixel(
 		ap_int<32> w,
 		ap_int<32> h,
 		ap_int<32> character,
+        ap_int<32> selector,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -73,7 +75,7 @@ void stegno(char c){
     
     // to check
 	charIn=toAscii(c);
-	if(count_streams > 3 * (position - 1) && count_streams < 3 * (position2)){
+	if(count_streams > 3 * (position1 - 1) && count_streams < 3 * (position2)){
 		addNum=charIn%10;
 		charIn=(int)charIn/10;
 		pkt.data=convertBinInt((convert(pkt.data)/10)*10+addNum);
