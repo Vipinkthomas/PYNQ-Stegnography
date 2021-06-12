@@ -38,7 +38,10 @@ void pixel(
 	#pragma HLS INTERFACE axis port=dout
 
 	pkt_t pkt=din.read();
-    pkt.data=stegno(character,pkt.data,position1,position2);
+    if (count_streams == 0){
+        charIn=toAscii((char)character);
+    }
+    pkt.data=stegno(charIn,pkt.data,position1,position2);
 	// switch(selector)
     // {
     //     case 0:
@@ -71,7 +74,7 @@ void pixel(
 
 int stegno(int c,int data,int position1,int position2){
 
-	charIn=toAscii((char)c);
+	
 	if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
 		addNum=charIn%10;
 		charIn=(int)charIn/10;
