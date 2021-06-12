@@ -56,11 +56,26 @@ void pixel(
 
        
         if(hexbin[cnnt] == '0' && hexbin[cnnt+1] == '1'){
-            pkt.data -= 1;             //must check if rgbr value is zero // add another condition
+           if(pkt.data >= 1){
+               pkt.data -= 1;
+           }else{
+              pkt.data += 1;
+           }
+                         
         }else if(hexbin[cnnt] == '1' && hexbin[cnnt+1] == '0'){
-            pkt.data -= 2;
+           if(pkt.data >= 2){
+               pkt.data -= 2;
+           }else{
+              pkt.data += 2;
+           }
+            
         }else if(hexbin[cnnt] == '1' && hexbin[cnnt+1] == '1'){
-            pkt.data -= 3;
+           if(pkt.data >= 3){
+               pkt.data -= 3;
+           }else{
+              pkt.data += 3;
+           }
+            
         }
 		
         
@@ -69,6 +84,12 @@ void pixel(
 
 	cnnt += 2;
 	count_streams++;
+
+   if (count_streams == stream_count){
+		count_streams = 0;
+		
+	}
+   
 
 	dout.write(pkt);
 
