@@ -81,12 +81,11 @@ void pixel(
            }
             
         }
-		
-        
+        cnnt += 2;   
     }
 
 
-	cnnt += 2;
+	
 	count_streams++;
 
    if (count_streams == stream_count){
