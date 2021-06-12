@@ -8,7 +8,6 @@ using namespace std;
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
 static long long charIn=0;
-static int addNum=0;
 //static int decrpyt=0;
 //static long long asciiNum=0;
 //static int asciiVal=0;
@@ -17,7 +16,7 @@ long long convert(int n);
 long long toAscii(chr number);
 int convertBinInt(long long n);
 void stegnoDcrypt(int data);
-int stegno(int c,int data,int position1,int position2);
+int stegno(int c,int data);
 
 void pixel(
 		ap_int<32> position1,
@@ -41,7 +40,12 @@ void pixel(
     if (count_streams == 0){
         charIn=toAscii((char)character);
     }
-    pkt.data=stegno(charIn,pkt.data,position1,position2);
+
+    if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
+
+        pkt.data=stegno(charIn,pkt.data);
+
+    }
 	// switch(selector)
     // {
     //     case 0:
@@ -61,7 +65,6 @@ void pixel(
 	if (count_streams == stream_count){
 		count_streams = 0;
         charIn=0;
-        addNum=0;
         // asciiVal= convertBinInt(asciiNum);
         // pkt.data=asciiVal;
         // dout.write(pkt);
@@ -74,14 +77,10 @@ void pixel(
     dout.write(pkt);
 }
 
-int stegno(int c,int data,int position1,int position2){
+int stegno(int c,int data){
 
-	
-	if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
-		addNum=charIn%10;
+		int addNum=charIn%10;
 		charIn=(int)charIn/10;
-
-	}
 
 	return convertBinInt((convert(data)/10)*10+addNum);
 
