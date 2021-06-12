@@ -60,6 +60,8 @@ void pixel(
 
 	if (count_streams == stream_count){
 		count_streams = 0;
+        charIn=0;
+        addNum=0;
         // asciiVal= convertBinInt(asciiNum);
         // pkt.data=asciiVal;
         // dout.write(pkt);
