@@ -77,7 +77,7 @@ void pixel(
     dout.write(pkt);
 }
 
-int stegno(int c,int data){
+int stegno(int data){
 
 		int addNum=charIn%10;
 		charIn=(int)charIn/10;
