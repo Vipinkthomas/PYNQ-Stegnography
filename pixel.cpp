@@ -55,7 +55,8 @@ void pixel(
 // 		pkt.data -= 1;
 // 	}
 //count_streams < 4
-	if(count_streams > 3 * (position - 1) && count_streams <= 3 * (position) + 1){
+
+	if(count_streams >= 3 * (position - 1) && count_streams < ( 3 * position) + 1){
 
        
         if(hexbin[cnnt] == '0' && hexbin[cnnt+1] == '1'){
