@@ -16,7 +16,7 @@ long long convert(int n);
 long long toAscii(chr number);
 int convertBinInt(long long n);
 void stegnoDcrypt(int data);
-int stegno(int c,int data);
+int stegno(int data);
 
 void pixel(
 		ap_int<32> position1,
@@ -43,7 +43,7 @@ void pixel(
 
     if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
 
-        pkt.data=stegno(charIn,pkt.data);
+        pkt.data=stegno(pkt.data);
 
     }
 	// switch(selector)
