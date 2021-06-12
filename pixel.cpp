@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
 #include<math.h>
