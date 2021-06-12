@@ -91,7 +91,7 @@ void pixel(
 
    if (count_streams == stream_count){
 		count_streams = 0;
-      hexbin[8]={'0','0','0','0','0','0','0','0'};
+      
       cnnt = 0;
 
 
