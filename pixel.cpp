@@ -9,9 +9,9 @@ typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
 static long long charIn=0;
 static int addNum=0;
-static int decrpyt=0;
-static long long asciiNum=0;
-static int asciiVal=0;
+//static int decrpyt=0;
+//static long long asciiNum=0;
+//static int asciiVal=0;
 
 long long convert(int n);
 long long toAscii(chr number);
@@ -38,28 +38,28 @@ void pixel(
 	#pragma HLS INTERFACE axis port=dout
 
 	pkt_t pkt=din.read();
+    pkt.data=stegno(character,pkt.data,position1,position2);
+	// switch(selector)
+    // {
+    //     case 0:
+    //         pkt.data=stegno(character,pkt.data,position1,position2);
+    //         break;
 
-	switch(selector)
-    {
-        case 0:
-            pkt.data=stegno(character,pkt.data,position1,position2);
-            break;
+    //     case 1:
+    //         stegnoDecrypt(pkt.data);
+    //         break;
 
-        case 1:
-            stegnoDecrypt(pkt.data);
-            break;
-
-        default:
-            break;
-    }
+    //     default:
+    //         break;
+    // }
 
 	count_streams++;
 
 	if (count_streams == stream_count){
 		count_streams = 0;
-        asciiVal= convertBinInt(asciiNum);
-        pkt.data=asciiVal;
-        dout.write(pkt);
+        // asciiVal= convertBinInt(asciiNum);
+        // pkt.data=asciiVal;
+        // dout.write(pkt);
 	}
 
 	// pending: have to make count=0 when TLAST signal is active -  for w not in the range of 0 to n(size of the array)
@@ -72,7 +72,7 @@ void pixel(
 int stegno(int c,int data,int position1,int position2){
 
 	charIn=toAscii((char)c);
-	if((count_streams > 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
+	if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
 		addNum=charIn%10;
 		charIn=(int)charIn/10;
 
@@ -82,13 +82,13 @@ int stegno(int c,int data,int position1,int position2){
 
 }
 
-void stegnoDcrypt(int data){
-
-    decrpyt=convert(data)%10;
-
-    asciiNum=asciiNum*10+decrpyt;
-
-}
+//void stegnoDcrypt(int data){
+//
+//    decrpyt=convert(data)%10;
+//
+//    asciiNum=asciiNum*10+decrpyt;
+//
+//}
 
 
 long long convert(int n) {
