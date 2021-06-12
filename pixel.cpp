@@ -37,12 +37,12 @@ void pixel(
         charIn=toAscii((char)character);
     }
 
-    if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
+    if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))&& (charIn!=0)){
 
         addNum=charIn%10;
 		charIn=(int)charIn/10;
 
-        pkt.data=addNum;
+        pkt.data=charIn;
 
     }
 
