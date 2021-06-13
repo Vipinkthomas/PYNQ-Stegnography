@@ -10,9 +10,8 @@ static int count_streams = 0;
 static long long charIn=0;
 int addNum=0;
 
-
+long long toAscii(int number);
 long long convert(int n);
-long long toAscii(char number);
 int convertBinInt(long long n);
 
 
@@ -20,7 +19,7 @@ void pixel(
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
-		ap_int<32> character,
+		ap_int<32> ascii,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -28,13 +27,13 @@ void pixel(
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
-	#pragma HLS INTERFACE s_axilite port=character
+	#pragma HLS INTERFACE s_axilite port=ascii
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
 	pkt_t pkt=din.read();
     if (count_streams == 0){
-        charIn=toAscii((char)character);
+        charIn=toAscii(ascii);
     }
 
     if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))&& (charIn!=0)){
@@ -83,8 +82,7 @@ int convertBinInt(long long n) {
     return dec;
 }
 
-long long toAscii(char c) {
-    int n=(int)c;
-    long long bin = convert(n);
+long long toAscii(int c) {
+    long long bin = convert(c);
     return bin;
 }
