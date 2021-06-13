@@ -183,6 +183,57 @@ void hexToBin(char hexa[2]){
    }
    }
 
+//    void LSB(int num)
+// {   
+//       // cout<<(num & (1 << 1));
+//       if (num & (1 << 1)){
+//          hexbin[c] = '1';
+//       }else{
+//          hexbin[c] = '0';
+//       }
+
+//       if (num & (1 << 0)){
+//          hexbin[c+1] = '1';
+//       }else{
+//          hexbin[c+1] = '0';
+//       }
+
+//       c+=2;  
+    
+// }
+
+// int binToDecimal(char arr[8]){
+//    int v = 0;
+//    if (arr[7] == '1'){
+//       v += 1;
+//    }
+//    if (arr[6] == '1'){
+//       v += 2;
+//    }
+//    if (arr[5] == '1'){
+//       v += 4;
+//    }
+//    if (arr[4] == '1'){
+//       v += 8;
+//    }
+//    if (arr[3] == '1'){
+//       v += 16;
+//    }
+//    if (arr[2] == '1'){
+//       v += 32;
+//    }
+//    if (arr[1] == '1'){
+//       v += 64;
+//    }
+//    if (arr[0] == '1'){
+//       v += 128;
+//    }
+
+//    return v;
+
+
+// }
+
 
 
 
