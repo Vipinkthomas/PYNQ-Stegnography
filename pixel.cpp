@@ -76,3 +76,4 @@ long long toAscii(int c) {
     long long bin = convert(c);
     return bin;
 }
+
