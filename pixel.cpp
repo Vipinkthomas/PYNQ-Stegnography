@@ -41,7 +41,7 @@ void pixel(
         addNum=charIn%10;
 		charIn=(int)charIn/10;
 
-        pkt.data-=charIn;
+        pkt.data-=addNum;
 
     }
 
