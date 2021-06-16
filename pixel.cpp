@@ -41,7 +41,8 @@ void pixel(
         addNum=charIn%10;
 		charIn=(int)charIn/10;
 
-        pkt.data-=addNum;
+        pkt.data = convertBinInt((convert(pkt.data)/10)*10+addNum)
+        // pkt.data-=addNum;
 
     }
 
@@ -76,4 +77,5 @@ long long toAscii(int c) {
     long long bin = convert(c);
     return bin;
 }
+
 
