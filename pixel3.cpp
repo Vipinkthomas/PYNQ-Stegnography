@@ -73,8 +73,13 @@ void pixel(
 
 	if (count_streams == stream_count){
 		count_streams = 0;
-        charIn=0;
-        addNum=0;
+        charIn1=0;
+        addNum1=0;
+        charIn2=0;
+        addNum2=0;
+        charIn3=0;
+        addNum4=0;
+        cnt = 0;
 
 	}
 
