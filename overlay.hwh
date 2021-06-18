@@ -1,9 +1,39 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jun 17 00:19:30 2021" VIVADOVERSION="2020.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jun 19 00:46:28 2021" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="overlay" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="ps_MIO">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ps" PORT="MIO"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="ps_DDR_VRN">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ps" PORT="DDR_VRN"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="ps_DDR_VRP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ps" PORT="DDR_VRP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="ps_PS_SRSTB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ps" PORT="PS_SRSTB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="ps_PS_CLK">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ps" PORT="PS_CLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="ps_PS_PORB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ps" PORT="PS_PORB"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="ps_DDR_CAS_n">
       <CONNECTIONS>
         <CONNECTION INSTANCE="ps" PORT="DDR_CAS_n"/>
@@ -77,36 +107,6 @@
     <PORT DIR="IO" LEFT="3" NAME="DDR_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="ps_DDR_DQS">
       <CONNECTIONS>
         <CONNECTION INSTANCE="ps" PORT="DDR_DQS"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="ps_MIO">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ps" PORT="MIO"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="ps_DDR_VRN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ps" PORT="DDR_VRN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="ps_DDR_VRP">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ps" PORT="DDR_VRP"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="ps_PS_SRSTB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ps" PORT="PS_SRSTB"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="ps_PS_CLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ps" PORT="PS_CLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="ps_PS_PORB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ps" PORT="PS_PORB"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -2424,14 +2424,14 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="2106170015" FULLNAME="/pixel" HWVERSION="1.0" INSTANCE="pixel" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pixel" VLNV="xilinx.com:hls:pixel:1.0">
+    <MODULE COREREVISION="2106190037" FULLNAME="/pixel" HWVERSION="1.0" INSTANCE="pixel" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pixel" VLNV="xilinx.com:hls:pixel:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="read-write" INTERFACE="s_axi_control" NAME="Reg" RANGE="65536" USAGE="register">
           <REGISTERS>
             <REGISTER NAME="position1">
               <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of position1"/>
-              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="16"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="32"/>
               <PROPERTY NAME="SIZE" VALUE="32"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
@@ -2451,7 +2451,7 @@
             </REGISTER>
             <REGISTER NAME="position2">
               <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of position2"/>
-              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="24"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="40"/>
               <PROPERTY NAME="SIZE" VALUE="32"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
@@ -2471,7 +2471,7 @@
             </REGISTER>
             <REGISTER NAME="stream_count">
               <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of stream_count"/>
-              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="32"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="48"/>
               <PROPERTY NAME="SIZE" VALUE="32"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
@@ -2491,7 +2491,7 @@
             </REGISTER>
             <REGISTER NAME="ascii">
               <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of ascii"/>
-              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="40"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="56"/>
               <PROPERTY NAME="SIZE" VALUE="32"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
@@ -2508,6 +2508,14 @@
                   <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
                 </FIELD>
               </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="Memory_key">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Memory key"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="16"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
             </REGISTER>
           </REGISTERS>
         </ADDRESSBLOCK>
