@@ -2,6 +2,7 @@
 #include <hls_stream.h>
 #include <ap_axi_sdata.h>
 #include<math.h>
+#include <string.h>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ long long convert(int n);
 int convertBinInt(long long n);
 
 
-void pixel(
+void pixel(char key[16],
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
@@ -24,6 +25,7 @@ void pixel(
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
+    #pragma HLS INTERFACE s_axilite port=key
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
