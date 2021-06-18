@@ -78,7 +78,7 @@ void pixel(
         charIn2=0;
         addNum2=0;
         charIn3=0;
-        addNum4=0;
+        addNum3=0;
         cnt = 0;
 
 	}
