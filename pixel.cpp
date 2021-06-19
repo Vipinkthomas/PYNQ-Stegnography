@@ -16,7 +16,7 @@ long long convert(int n);
 int convertBinInt(long long n);
 
 
-void pixel(char key[16],
+void pixel(char key,
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
