@@ -44,13 +44,13 @@ void pixel(char key,
         }
 
         if(pkt.data == 255 && addNum == 0){
-            pkt.data -= 1
+            pkt.data -= 1;
         }else if(pkt.data == 0 && addNum == 1){
-            pkt.data += 1
+            pkt.data += 1;
         }else if(pkt.data % 2 == 0 && addNum == 1){
-            pkt.data -= 1
+            pkt.data -= 1;
         }else if(pkt.data % 2 != 0 && addNum == 0){
-            pkt.data -= 1
+            pkt.data -= 1;
         }
         
         // pkt.data-=addNum;
