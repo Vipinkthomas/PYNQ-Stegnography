@@ -11,9 +11,7 @@ static int count_streams = 0;
 static long long charIn=0;
 int addNum=0;
 
-long long toAscii(int number);
 long long convert(int n);
-int convertBinInt(long long n);
 
 
 void pixel(char key,
@@ -35,13 +33,15 @@ void pixel(char key,
 
 	pkt_t pkt=din.read();
     if (count_streams == 0){
-        charIn=toAscii(ascii);
+        charIn=convert(ascii);
     }
 
-    if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))&& (charIn!=0)){
-
+    if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
+        addNum=0;
+        if(charIn!=0){
         addNum=charIn%10;
 		charIn=(int)charIn/10;
+        }
 
         if(pkt.data == 255 && addNum == 0){
             pkt.data -= 1
@@ -83,19 +83,3 @@ long long convert(int n) {
     return bin;
 }
 
-
-long long toAscii(int c) {
-    long long bin = convert(c);
-    return bin;
-}
-
-int convertBinInt(long long n) {
-    int dec = 0, i = 0, rem;
-    while (n != 0) {
-        rem = n % 10;
-        n /= 10;
-        dec += rem * pow(2, i);
-        ++i;
-    }
-    return dec;
-}
