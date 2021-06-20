@@ -25,12 +25,13 @@ void pixel(ap_int<32> selector,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
-	#pragma HLS INTERFACE ap_ctrl_none port=return
+    #pragma HLS INTERFACE s_axilite port=return bundle=OUT
+	// #pragma HLS INTERFACE ap_ctrl_none port=return
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
-	#pragma HLS INTERFACE s_axilite port=ascii
+	#pragma HLS INTERFACE s_axilite port=ascii bundle=OUT
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
@@ -44,7 +45,7 @@ void pixel(ap_int<32> selector,
                 charIn=convert(ascii);
             }
 
-            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
+            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
                 addNum=0;
                 if(charIn!=0){
                     addNum=charIn%10;
