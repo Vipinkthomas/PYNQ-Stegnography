@@ -82,7 +82,7 @@ void pixel(ap_int<32> selector,
         addNum=0;
         ascii= convertBinInt(final_char);
         if(selector == 1){
-            dout.write(final_char);
+            ascii.write(final_char);
         }
 
 	}
