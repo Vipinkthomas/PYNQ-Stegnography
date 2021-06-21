@@ -17,18 +17,15 @@ int convertBinInt(long long n);
 void decrypt(int data);
 
 
-int pixel(ap_int<32> selector,
+void pixel(ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
-		ap_int<32> ascii,
+		ap_int<32> &ascii,
 		hls::stream< pkt_t > &din,
-		hls::stream< pkt_t > &dout,
-        int *c
+		hls::stream< pkt_t > &dout
 ) {
-	// #pragma HLS INTERFACE ap_ctrl_none port=return
-    #pragma HLS INTERFACE s_axilite port=return
-
+	#pragma HLS INTERFACE ap_ctrl_none port=return
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
@@ -66,7 +63,9 @@ int pixel(ap_int<32> selector,
 
         case 1:
 
-            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2))){
+            ascii=0;
+            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
+                
                 
                 decrypt(pkt.data);
             
@@ -83,16 +82,14 @@ int pixel(ap_int<32> selector,
 		count_streams = 0;
         charIn=0;
         addNum=0;
-        ascii= convertBinInt(final_char);
+        
         if(selector == 1){
-            *c = final_char;
-            return *c
+            ascii= convertBinInt(final_char);
         }
 
 	}
 
     dout.write(pkt);
-    return *c;
 }
 
 
@@ -120,14 +117,16 @@ final_char= final_char*10+bit;
 }
 
 int convertBinInt(long long n) {
-    int dec = 0, i = 0, rem;
+    int dec = 0, i = 7,b, rem;
     while (n != 0) {
-        rem = n % 10;
-        n /= 10;
+        b=pow(10,i);
+        rem = n /b;
+        n =n % b;
+        printf(" %lld\n", n);
         dec += rem * pow(2, i);
-        ++i;
+        printf(" %d\n", dec);
+        --i;
     }
     return dec;
 }
-
-
+}
