@@ -92,6 +92,7 @@ int pixel(ap_int<32> selector,
 	}
 
     dout.write(pkt);
+    return *c;
 }
 
 
