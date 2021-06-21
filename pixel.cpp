@@ -129,4 +129,4 @@ int convertBinInt(long long n) {
     }
     return dec;
 }
-}
+
