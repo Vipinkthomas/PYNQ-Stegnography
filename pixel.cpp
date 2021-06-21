@@ -63,7 +63,6 @@ void pixel(ap_int<32> selector,
 
         case 1:
 
-            ascii=0;
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
                 
                 
@@ -82,7 +81,7 @@ void pixel(ap_int<32> selector,
 		count_streams = 0;
         charIn=0;
         addNum=0;
-        
+        ascii=0;
         if(selector == 1){
             ascii= convertBinInt(final_char);
         }
@@ -117,14 +116,12 @@ final_char= final_char*10+bit;
 }
 
 int convertBinInt(long long n) {
-    int dec = 0, i = 7,b, rem;
+    int dec = 0, i = 7,b=0, rem=0;
     while (n != 0) {
         b=pow(10,i);
         rem = n / b;
         n =n % b;
-         printf(" %lld\n", n);
         dec += rem * pow(2, i);
-        printf(" %d\n", dec);
         --i;
     }
     return dec;
