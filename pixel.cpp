@@ -119,8 +119,8 @@ final_char= final_char*10+bit;
 int convertBinInt(long long n) {
     int dec = 0, i = 7,b, rem;
     while (n != 0) {
-        rem = n % 10;
         b=pow(10,i);
+        rem = n / b;
         n =n % b;
          printf(" %lld\n", n);
         dec += rem * pow(2, i);
