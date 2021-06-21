@@ -17,15 +17,18 @@ int convertBinInt(long long n);
 void decrypt(int data);
 
 
-void pixel(ap_int<32> selector,
+int pixel(ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
 		ap_int<32> ascii,
 		hls::stream< pkt_t > &din,
-		hls::stream< pkt_t > &dout
+		hls::stream< pkt_t > &dout,
+        int *c
 ) {
-	#pragma HLS INTERFACE ap_ctrl_none port=return
+	// #pragma HLS INTERFACE ap_ctrl_none port=return
+    #pragma HLS INTERFACE s_axilite port=return
+
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
@@ -82,7 +85,8 @@ void pixel(ap_int<32> selector,
         addNum=0;
         ascii= convertBinInt(final_char);
         if(selector == 1){
-            ascii.write(final_char);
+            *c = final_char;
+            return *c
         }
 
 	}
