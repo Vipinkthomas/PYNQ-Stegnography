@@ -134,6 +134,6 @@ int dec = 0, i = 7, b=0,rem=0;
 
 void toAscii(char *c) {
     int n=(int)*c;
-    key=(char)n;
+    c=(char)n;
 }
 
