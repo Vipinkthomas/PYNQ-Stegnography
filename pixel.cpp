@@ -17,7 +17,7 @@ int convertBinInt(long long n);
 void decrypt(int data);
 
 
-void pixel(char* key;
+void pixel(char *key;
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
