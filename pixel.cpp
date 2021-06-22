@@ -138,7 +138,7 @@ int dec = 0, i = 7, b=0,rem=0;
     return dec;
 }
 
-void toAscii(char *c) {
-    int n=(int)*c;
-    c=(char)n;
-}
+// void toAscii(char *c) {
+//     int n=(int)*c;
+//     c=(char)n;
+// }
