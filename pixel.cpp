@@ -118,12 +118,13 @@ final_char= final_char*10+bit;
 }
 
 int convertBinInt(long long n) {
-    int dec = 0, i = 0, rem=0;
+int dec = 0, i = 7, b=0,rem=0;
     while (n != 0) {
-        rem = n % 10;
-        n /= 10;
-        dec += rem * pow(2, i);
-        ++i;
+        b=pow(10,i);
+        rem = n / b;
+        n =n % b;
+        dec += rem * pow(2, 7-i);
+        --i;
     }
     return dec;
 }
