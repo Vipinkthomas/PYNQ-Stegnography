@@ -18,7 +18,7 @@ void decrypt(int data);
 void toAscii(char *c);
 
 
-void pixel(char key[3],
+void pixel(char *key,
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
