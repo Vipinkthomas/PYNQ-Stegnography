@@ -84,6 +84,7 @@ void pixel(ap_int<32> selector,
         ascii=0;
         if(selector == 1){
             ascii= convertBinInt(final_char);
+            final_char=0;
         }
 
 	}
