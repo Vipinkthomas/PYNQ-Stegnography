@@ -42,6 +42,7 @@ void pixel(ap_int<32> selector,
             
             if (count_streams == 0){
                 charIn=convert(ascii);
+                final_char=0;
             }
 
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
@@ -117,7 +118,7 @@ final_char= final_char*10+bit;
 }
 
 int convertBinInt(long long n) {
-    int dec = 0, i = 7, rem=0;
+    int dec = 0, i = 0, rem=0;
     while (n != 0) {
         rem = n % 10;
         n /= 10;
