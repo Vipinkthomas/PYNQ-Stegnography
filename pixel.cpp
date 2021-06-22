@@ -34,70 +34,64 @@ void pixel(char *key,
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
 	#pragma HLS INTERFACE s_axilite port=ascii 
-    #pragma HLS INTERFACE s_axilite port=key
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
-                if(key[1] == 'c'){
-                    pkt.data -=5;
+    toAscii(key);
+    switch(selector)
+    {
+        case 0:
+            
+            if (count_streams == 0){
+                charIn=convert(ascii);
+                final_char=0;
+            }
+
+            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
+                addNum=0;
+                if(charIn!=0){
+                    addNum=charIn%10;
+		            charIn=(int)charIn/10;
                 }
+
+                if(pkt.data % 2 == 0 && addNum == 1){
+                    pkt.data += 1;
+                }else if(pkt.data % 2 != 0 && addNum == 0){
+                    pkt.data -= 1;
+                }
+
+            }
+
+            break;
+
+        case 1:
+
+            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
+                
+                
+                decrypt(pkt.data);
+            
+            }
+            break;
+
+        default:
+            break;
     }
-    // toAscii(key);
-    // switch(selector)
-    // {
-    //     case 0:
-            
-    //         if (count_streams == 0){
-    //             charIn=convert(ascii);
-    //             final_char=0;
-    //         }
-
-    //         if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
-    //             // addNum=0;
-    //             // if(charIn!=0){
-    //             //     addNum=charIn%10;
-	// 	        //     charIn=(int)charIn/10;
-    //             // }
-
-    //             // if(pkt.data % 2 == 0 && addNum == 1){
-    //             //     pkt.data += 1;
-    //             // }else if(pkt.data % 2 != 0 && addNum == 0){
-    //             //     pkt.data -= 1;
-    //             // }
-
-    //         }
-
-    //         break;
-
-    //     case 1:
-
-    //         if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
-                
-                
-    //             decrypt(pkt.data);
-            
-    //         }
-    //         break;
-
-    //     default:
-    //         break;
-    // }
 	
-	// count_streams++;
+	count_streams++;
 
-	// if (count_streams == stream_count){
-	// 	count_streams = 0;
-    //     charIn=0;
-    //     addNum=0;
-    //     ascii=0;
-    //     if(selector == 1){
-    //         ascii= convertBinInt(final_char);
-    //         final_char=0;
-    //     }
+	if (count_streams == stream_count){
+		count_streams = 0;
+        charIn=0;
+        addNum=0;
+        ascii=0;
+        if(selector == 1){
+            ascii= convertBinInt(final_char);
+            final_char=0;
+        }
 
-	// }
+	}
 
     dout.write(pkt);
 }
@@ -138,7 +132,7 @@ int dec = 0, i = 7, b=0,rem=0;
     return dec;
 }
 
-// void toAscii(char *c) {
-//     int n=(int)*c;
-//     c=(char)n;
-// }
+void toAscii(char *c) {
+    int n=(int)*c;
+    c=*(char)n;
+}
