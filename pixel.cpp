@@ -38,7 +38,7 @@ void pixel(ap_uint<8> in_array[2],
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    toAscii(key);
+    // toAscii(key);
     switch(selector)
     {
         case 0:
@@ -134,7 +134,7 @@ int dec = 0, i = 7, b=0,rem=0;
     return dec;
 }
 
-void toAscii(char *c) {
-    int n=(int)*c;
-    c=*(char)n;
-}
+// void toAscii(char *c) {
+//     int n=(int)*c;
+//     c=*(char)n;
+// }
