@@ -18,7 +18,7 @@ void decrypt(int data);
 void toAscii(char *c);
 
 
-void pixel(ap_uint<8> in_array[2],
+void pixel(int in_array[2],
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
@@ -28,7 +28,7 @@ void pixel(ap_uint<8> in_array[2],
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
-    #pragma HLS INTERFACE s_axilite port=in_array
+    #pragma HLS INTERFACE axis port=in_array
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
