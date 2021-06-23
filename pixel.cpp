@@ -15,10 +15,10 @@ int addNum=0;
 long long convert(int n);
 int convertBinInt(long long n);
 void decrypt(int data);
-// void toAscii(char *c);
+void toAscii(char *c);
 
 
-void pixel(char *key,
+void pixel(ap_uint<8> in_array[2],
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
@@ -28,7 +28,7 @@ void pixel(char *key,
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
-    #pragma HLS INTERFACE s_axilite port=key
+    #pragma HLS INTERFACE s_axilite port=in_array
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
@@ -38,8 +38,7 @@ void pixel(char *key,
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    int n=(int)*key;
-    *key=(char)n;
+    // toAscii(key);
     switch(selector)
     {
         case 0:
@@ -57,9 +56,11 @@ void pixel(char *key,
                 }
 
                 if(pkt.data % 2 == 0 && addNum == 1){
-                    pkt.data += 1;
+                    // pkt.data += 1;
+                    pkt.data += in_array[1];
                 }else if(pkt.data % 2 != 0 && addNum == 0){
-                    pkt.data -= 1;
+                    // pkt.data -= 1;
+                    pkt.data -= in_array[0];
                 }
 
             }
@@ -132,9 +133,4 @@ int dec = 0, i = 7, b=0,rem=0;
     }
     return dec;
 }
-
-// void toAscii(char *c) {
-//     int n=(int)*c;
-//     c=*(char)n;
-// }
 
