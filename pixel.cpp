@@ -15,7 +15,7 @@ int addNum=0;
 long long convert(int n);
 int convertBinInt(long long n);
 void decrypt(int data);
-void toAscii(char *c);
+// void toAscii(char *c);
 
 
 void pixel(char *key,
@@ -38,7 +38,8 @@ void pixel(char *key,
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    toAscii(key);
+    int n=(int)*key;
+    *key=(char)n;
     switch(selector)
     {
         case 0:
@@ -132,8 +133,8 @@ int dec = 0, i = 7, b=0,rem=0;
     return dec;
 }
 
-void toAscii(char *c) {
-    int n=(int)*c;
-    c=*(char)n;
-}
+// void toAscii(char *c) {
+//     int n=(int)*c;
+//     c=*(char)n;
+// }
 
