@@ -38,9 +38,9 @@ void pixel(char key[3],
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    for(i = 0;i<3;i++)
+    for(int i=0;i<3;i++)
 	{
-            key[i]=(int)c+1;
+            key[i]=(int)key[i]+1;
     }
     switch(selector)
     {
