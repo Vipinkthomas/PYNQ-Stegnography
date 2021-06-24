@@ -31,7 +31,7 @@ int main() {
     	    for (int x = 0; x < 2; x++) {
     	    	for (int z = 0;z < 2; z++){
             pkt_t tmp = streamOut.read();
-            printf("%d",tmp.data);
+
         }
     }
     }
