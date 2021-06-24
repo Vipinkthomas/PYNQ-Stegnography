@@ -18,7 +18,7 @@ void decrypt(int data);
 // void toAscii(char *c);
 
 
-void pixel(char key[16],
+void pixel(char key[3],
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
@@ -38,8 +38,10 @@ void pixel(char key[16],
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    int n=(int)*key;
-    *key=(char)n;
+    for(i = 0;i<3;i++)
+	{
+            key[i]=(int)c+1;
+    }
     switch(selector)
     {
         case 0:
