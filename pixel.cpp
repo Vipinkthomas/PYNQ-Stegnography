@@ -18,12 +18,13 @@ void decrypt(int data);
 // void toAscii(char *c);
 
 
-void pixel(char key[3],
+void pixel(char key[1],
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
 		ap_int<32> &ascii,
+        ap_int<32> &keyout,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -34,14 +35,14 @@ void pixel(char key[3],
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
 	#pragma HLS INTERFACE s_axilite port=ascii 
+    #pragma HLS INTERFACE s_axilite port=keyout 
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
     pkt_t pkt=din.read();
-    for(int i=0;i<3;i++)
-	{
-            key[i]=(int)key[i]+1;
-    }
+
+    keyout=(int)key[0];
+ 
     switch(selector)
     {
         case 0:
