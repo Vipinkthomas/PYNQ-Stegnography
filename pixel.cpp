@@ -34,7 +34,7 @@ void pixel(vec_t& xs,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
-	#pragma HLS INTERFACE ap_ctrl_none port=return
+
     #pragma HLS INTERFACE s_axilite port=xs
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
