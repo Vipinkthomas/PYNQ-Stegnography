@@ -6,6 +6,11 @@
 
 using namespace std;
 
+
+const auto N = 1<<2;  // array size
+using vec_t = std::array<char, N>;
+
+
 typedef ap_axis<32,0,0,0> pkt_t;
 static int count_streams = 0;
 static long long charIn=0;
@@ -18,7 +23,7 @@ void decrypt(int data);
 // void toAscii(char *c);
 
 
-void pixel(char key[16],
+void pixel(vec_t& xs,
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
@@ -29,7 +34,7 @@ void pixel(char key[16],
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
-    #pragma HLS INTERFACE s_axilite port=key
+    #pragma HLS INTERFACE s_axilite port=xs
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
@@ -41,7 +46,7 @@ void pixel(char key[16],
 
     pkt_t pkt=din.read();
 
-    keyout=(int)key[0];
+    keyout=(int)xs[0];
  
     switch(selector)
     {
