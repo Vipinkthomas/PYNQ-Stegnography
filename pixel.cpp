@@ -11,29 +11,31 @@ static int count_streams = 0;
 static long long charIn=0;
 static long long final_char=0;
 int addNum=0;
+static int decNum = 0;
 
 long long convert(int n);
 int convertBinInt(long long n);
 void decrypt(int data);
 void toAscii(char *c);
+int getDecimal(int n);
 
 
-void pixel(unsigned int *in1,
+void pixel(ap_int<32> in_decimal,
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
-		ap_int<32> &ascii,
+		// ap_int<32> &ascii,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
-    #pragma HLS INTERFACE s_axilite port=in1
+    #pragma HLS INTERFACE s_axilite port=in_decimal
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
-	#pragma HLS INTERFACE s_axilite port=ascii 
+	// #pragma HLS INTERFACE s_axilite port=ascii 
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
@@ -46,22 +48,24 @@ void pixel(unsigned int *in1,
             if (count_streams == 0){
                 charIn=convert(ascii);
                 final_char=0;
+                decNum = in_decimal;
             }
 
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
-                addNum=0;
-                if(charIn!=0){
-                    addNum=charIn%10;
-		            charIn=(int)charIn/10;
+                // addNum=0;
+                
+                if(decNum !=0 ){
+                    pkt.data + = getDecimal(decNum);
+		            decNum = decNum/1000;
                 }
 
-                if(pkt.data % 2 == 0 && addNum == 1){
-                    // pkt.data += 1;
-                    pkt.data += in1[1];
-                }else if(pkt.data % 2 != 0 && addNum == 0){
-                    // pkt.data -= 1;
-                    pkt.data -= in1[0];
-                }
+                // if(pkt.data % 2 == 0 && addNum == 1){
+                //     // pkt.data += 1;
+                //     pkt.data += in1[1];
+                // }else if(pkt.data % 2 != 0 && addNum == 0){
+                //     // pkt.data -= 1;
+                //     pkt.data -= in1[0];
+                // }
 
             }
 
@@ -133,4 +137,12 @@ int dec = 0, i = 7, b=0,rem=0;
     }
     return dec;
 }
+
+int getDecimal(int n) {
+    int num = 0;
+    num = n % 1000;
+    return num;
+    }
+    
+
 
