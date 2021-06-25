@@ -55,7 +55,7 @@ void pixel(ap_int<32> in_decimal,
                 // addNum=0;
                 
                 if(decNum !=0 ){
-                    pkt.data + = getDecimal(decNum);
+                    pkt.data += getDecimal(decNum);
 		            decNum = decNum/1000;
                 }
 
