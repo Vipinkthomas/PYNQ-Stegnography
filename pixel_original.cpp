@@ -1,10 +1,10 @@
 	#include "pixel.hpp"
-	
+
 	static int count_streams = 0;
 	static long long charIn=0;
 	static long long final_char=0;
 	int addNum=0;
-	
+
 	void pixel(ap_int<32> selector,
 			ap_int<32> position1,
 			ap_int<32> position2,
@@ -12,61 +12,60 @@
 			ap_int<32> ascii,
 			stream &din,
 			stream &dout
-	
+
 	) {
-		#pragma HLS INTERFACE ap_ctrl_none port=return
 		#pragma HLS INTERFACE s_axilite port=selector
 		#pragma HLS INTERFACE s_axilite port=position1
 		#pragma HLS INTERFACE s_axilite port=position2
 		#pragma HLS INTERFACE s_axilite port=stream_count
-		#pragma HLS INTERFACE s_axilite port=ascii 
+		#pragma HLS INTERFACE s_axilite port=ascii
 		#pragma HLS INTERFACE axis port=din
 		#pragma HLS INTERFACE axis port=dout
-	
+
 		pkt_t pkt=din.read();
-	
+
 		switch(selector)
 		{
 			case 0:
-				
+
 				if (count_streams == 0){
 					charIn=convert(ascii);
 					final_char=0;
 				}
-	
+
 				if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
 					addNum=0;
 					if(charIn!=0){
 						addNum=charIn%10;
 						charIn=(int)charIn/10;
 					}
-	
+
 					if(pkt.data % 2 == 0 && addNum == 1){
 						pkt.data += 1;
 					}else if(pkt.data % 2 != 0 && addNum == 0){
 						pkt.data -= 1;
 					}
-	
+
 				}
-	
+
 				break;
-	
+
 			case 1:
-	
+
 				if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
-					
-					
+
+
 					decrypt(pkt.data);
-				
+
 				}
 				break;
-	
+
 			default:
 				break;
 		}
-		
+
 		count_streams++;
-	
+
 		if (count_streams == stream_count){
 			count_streams = 0;
 			charIn=0;
@@ -76,13 +75,13 @@
 				ascii= convertBinInt(final_char);
 				final_char=0;
 			}
-	
+
 		}
-	
+
 		dout.write(pkt);
 	}
-	
-	
+
+
 	long long convert(int n) {
 		long long bin = 0;
 		int rem, i = 1, step = 1;
@@ -94,7 +93,7 @@
 		}
 		return bin;
 	}
-	
+
 	void decrypt(int data) {
 	int bit;
 	if(data % 2 == 0){
@@ -103,7 +102,7 @@
 		bit=1;
 	}
 	final_char= final_char*10+bit;
-	
+
 	}
 	
 	int convertBinInt(long long n) {
@@ -117,5 +116,4 @@
 		}
 		return dec;
 	}
-	
 
