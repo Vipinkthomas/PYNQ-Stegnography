@@ -7,6 +7,7 @@
 
 using namespace std;
 typedef ap_axis<32,0,0,0> pkt_t;
+
 typedef hls::stream< pkt_t > stream;
 void pixel(ap_int<32> selector,
 		ap_int<32> position1,
