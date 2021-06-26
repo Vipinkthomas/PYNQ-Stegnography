@@ -13,6 +13,7 @@ static long long final_char=0;
 int addNum=0;
 static int decNum = 0;
 static int decimalCounter = 0;
+static int decimalOut = 0;
 int lastDecimalVal;
 
 long long convert(int n);
@@ -22,12 +23,11 @@ void toAscii(char *c);
 int getDecimal(int n);
 
 
-void pixel(ap_int<32> in_decimal,
+void pixel(ap_int<32> &in_decimal,
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
 		ap_int<32> stream_count,
-		ap_int<32> &ascii,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -37,7 +37,6 @@ void pixel(ap_int<32> in_decimal,
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
 	#pragma HLS INTERFACE s_axilite port=stream_count
-	#pragma HLS INTERFACE s_axilite port=ascii 
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
@@ -48,13 +47,12 @@ void pixel(ap_int<32> in_decimal,
         case 0:
             
             if (count_streams == 0){
-                
+                in_decimal=0;
                 final_char=0;
                 decNum = in_decimal;
-                
             }
             //123456321
-            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
+            if((count_streams >= (position1 - 1)) && (count_streams < position2)){
                 // addNum=0;
                 addNum=0;
                 if(decimalCounter % 8 == 0){
@@ -86,12 +84,17 @@ void pixel(ap_int<32> in_decimal,
             break;
 
         case 1:
-
-            if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
+            if((count_streams >= (position1 - 1)) && (count_streams < position2)){
                 
                 
                 decrypt(pkt.data);
+                decimalCounter++;
+                if(decimalCounter == 8){
+                    decimalOut=decimalOut*1000+convertBinInt(final_char);
+                    decimalCounter=0;   
+                }
             
+                
             }
             break;
 
@@ -105,10 +108,11 @@ void pixel(ap_int<32> in_decimal,
 		count_streams = 0;
         charIn=0;
         addNum=0;
-        ascii=0;
+        decimalCounter=0;
         if(selector == 1){
-            ascii= convertBinInt(final_char);
             final_char=0;
+            in_decimal=decimalOut;
+            decimalOut=0;
         }
 
 	}
