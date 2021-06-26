@@ -47,7 +47,6 @@ void pixel(ap_int<32> &in_decimal,
         case 0:
             
             if (count_streams == 0){
-                in_decimal=0;
                 final_char=0;
                 decNum = in_decimal;
             }
@@ -57,7 +56,7 @@ void pixel(ap_int<32> &in_decimal,
                 addNum=0;
                 if(decimalCounter % 8 == 0){
                     lastDecimalVal = getDecimal(decNum);
-                    decNum /= 1000;
+                    decNum /= 100;
                     charIn=convert(lastDecimalVal);
                     
                 }
@@ -90,8 +89,9 @@ void pixel(ap_int<32> &in_decimal,
                 decrypt(pkt.data);
                 decimalCounter++;
                 if(decimalCounter == 8){
-                    decimalOut=decimalOut*1000+convertBinInt(final_char);
-                    decimalCounter=0;   
+                    decimalOut=decimalOut*100+convertBinInt(final_char);  
+                    decimalCounter=0;
+                    final_char=0;   
                 }
             
                 
@@ -158,7 +158,7 @@ int dec = 0, i = 7, b=0,rem=0;
 
 int getDecimal(int n) {
     int num = 0;
-    num = n % 1000;
+    num = n % 100;
     return num;
     }
 
