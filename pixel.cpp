@@ -12,6 +12,8 @@ static long long charIn=0;
 static long long final_char=0;
 int addNum=0;
 static int decNum = 0;
+static int decimalCounter = 0;
+int lastDecimalVal;
 
 long long convert(int n);
 int convertBinInt(long long n);
@@ -46,26 +48,38 @@ void pixel(ap_int<32> in_decimal,
         case 0:
             
             if (count_streams == 0){
-                charIn=convert(ascii);
+                
                 final_char=0;
                 decNum = in_decimal;
+                
             }
-
+            //123456321
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
                 // addNum=0;
-                
-                if(decNum !=0 ){
-                    pkt.data += getDecimal(decNum);
-		            decNum = decNum/1000;
+                addNum=0;
+                if(decimalCounter % 8 == 0){
+                    lastDecimalVal = getDecimal(decNum);
+                    decNum /= 1000;
+                    charIn=convert(lastDecimalVal);
+                    
                 }
+                addNum=charIn%10;
+		        charIn=(int)charIn/10;
 
-                // if(pkt.data % 2 == 0 && addNum == 1){
-                //     // pkt.data += 1;
-                //     pkt.data += in1[1];
-                // }else if(pkt.data % 2 != 0 && addNum == 0){
-                //     // pkt.data -= 1;
-                //     pkt.data -= in1[0];
+                
+                // if(decNum !=0 ){
+                //     pkt.data += getDecimal(decNum);
+		        //     decNum = decNum/1000;
                 // }
+
+                if(pkt.data % 2 == 0 && addNum == 1){
+                    pkt.data += 1;
+                    
+                }else if(pkt.data % 2 != 0 && addNum == 0){
+                    pkt.data -= 1;
+                    
+                }
+                decimalCounter++;
 
             }
 
