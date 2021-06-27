@@ -99,6 +99,7 @@ void pixel(ap_int<32> in_decimal,
             break;
     }
 	
+
 	count_streams++;
 
 	if (count_streams == stream_count){
@@ -113,7 +114,12 @@ void pixel(ap_int<32> in_decimal,
 
 	}
 
+    if(count_streams > position2){
+        pkt.last = 1;
+    }
+    
     dout.write(pkt);
+    
 }
 
 
