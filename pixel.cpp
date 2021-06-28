@@ -7,6 +7,7 @@
 using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
+pkt_t tmp;
 static int count_streams = 0;
 static long long charIn=0;
 static long long final_char=0;
@@ -41,7 +42,7 @@ void pixel(ap_int<32> in_decimal,
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
-    pkt_t pkt=din.read();
+    din >> tmp;
     // toAscii(key);
     switch(selector)
     {
@@ -66,17 +67,11 @@ void pixel(ap_int<32> in_decimal,
                 addNum=charIn%10;
 		        charIn=(int)charIn/10;
 
-                
-                // if(decNum !=0 ){
-                //     pkt.data += getDecimal(decNum);
-		        //     decNum = decNum/1000;
-                // }
-
-                if(pkt.data % 2 == 0 && addNum == 1){
-                    pkt.data += 1;
+                if(tmp.data % 2 == 0 && addNum == 1){
+                    tmp.data += 1;
                     
-                }else if(pkt.data % 2 != 0 && addNum == 0){
-                    pkt.data -= 1;
+                }else if(tmp.data % 2 != 0 && addNum == 0){
+                    tmp.data -= 1;
                     
                 }
                 decimalCounter++;
@@ -90,7 +85,7 @@ void pixel(ap_int<32> in_decimal,
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
                 
                 
-                decrypt(pkt.data);
+                decrypt(tmp.data);
             
             }
             break;
@@ -115,10 +110,10 @@ void pixel(ap_int<32> in_decimal,
 	}
 
     if(count_streams > position2){
-        pkt.last = 1;
+        tmp.last = 1;
     }
-    
-    dout.write(pkt);
+    tmp.strb = 0xf;
+    dout << tmp;
     
 }
 
@@ -127,6 +122,7 @@ long long convert(int n) {
     long long bin = 0;
     int rem, i = 1, step = 1;
     while (n != 0) {
+        #pragma HLS unroll
         rem = n % 2;
         n /= 2;
         bin += rem * i;
@@ -149,6 +145,7 @@ final_char= final_char*10+bit;
 int convertBinInt(long long n) {
 int dec = 0, i = 7, b=0,rem=0;
     while (n != 0) {
+        #pragma HLS unroll
         b=pow(10,i);
         rem = n / b;
         n =n % b;
