@@ -42,6 +42,7 @@ void pixel(ap_int<32> in_decimal,
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
+    pkt_t pkt=din.read();
 
     switch(selector)
     {
@@ -66,11 +67,11 @@ void pixel(ap_int<32> in_decimal,
                 addNum=charIn%10;
 		        charIn=(int)charIn/10;
 
-                if(tmp.data % 2 == 0 && addNum == 1){
-                    tmp.data += 1;
+                if(pkt.data % 2 == 0 && addNum == 1){
+                    pkt.data += 1;
                     
-                }else if(tmp.data % 2 != 0 && addNum == 0){
-                    tmp.data -= 1;
+                }else if(pkt.data % 2 != 0 && addNum == 0){
+                    pkt.data -= 1;
                     
                 }
                 decimalCounter++;
@@ -84,7 +85,7 @@ void pixel(ap_int<32> in_decimal,
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2)-1)){
                 
                 
-                decrypt(tmp.data);
+                decrypt(pkt.data);
             
             }
             break;
