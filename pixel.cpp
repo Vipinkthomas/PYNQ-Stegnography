@@ -7,7 +7,7 @@
 using namespace std;
 
 typedef ap_axis<32,0,0,0> pkt_t;
-pkt_t tmp;
+
 static int count_streams = 0;
 static long long charIn=0;
 static long long final_char=0;
@@ -42,8 +42,7 @@ void pixel(ap_int<32> in_decimal,
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
-    din >> tmp;
-    // toAscii(key);
+
     switch(selector)
     {
         case 0:
@@ -54,9 +53,9 @@ void pixel(ap_int<32> in_decimal,
                 decNum = in_decimal;
                 
             }
-            //123456321
+            
             if((count_streams >= 3 * (position1 - 1)) && (count_streams < 3 * (position2) - 1)){
-                // addNum=0;
+                
                 addNum=0;
                 if(decimalCounter % 8 == 0){
                     lastDecimalVal = getDecimal(decNum);
@@ -109,11 +108,6 @@ void pixel(ap_int<32> in_decimal,
 
 	}
 
-    if(count_streams > position2){
-        tmp.last = 1;
-    }
-    tmp.strb = 0xf;
-    dout << tmp;
     
 }
 
