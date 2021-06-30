@@ -1,7 +1,7 @@
 # RTL using Vivado
 # ################
 HLS_TOP ?= hls_top
-RTL_TOP ?= overlay
+RTL_TOP ?= steganography
 HLS_IP ?= hls-proj/s/impl/export.zip
 
 ###
