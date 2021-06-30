@@ -21,24 +21,22 @@ int convertBinInt(long long n);
 void decrypt(int data);
 void toAscii(char *c);
 int getDecimal(int n);
-
+pkt_t tmpA;
 
 void pixel(ap_int<32> &in_decimal,
         ap_int<32> selector,
-		ap_int<32> position1,
-		ap_int<32> position2,
+		ap_int<32> stream_count,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
     #pragma HLS INTERFACE s_axilite port=in_decimal
     #pragma HLS INTERFACE s_axilite port=selector
-	#pragma HLS INTERFACE s_axilite port=position1
-	#pragma HLS INTERFACE s_axilite port=position2
+	#pragma HLS INTERFACE s_axilite port=stream_count
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
-    pkt_t pkt=din.read();
+    din >> tmpA;
     // toAscii(key);
     switch(selector)
     {
@@ -49,7 +47,6 @@ void pixel(ap_int<32> &in_decimal,
                 decNum = in_decimal;
             }
             //123456321
-            if((count_streams >= (position1 - 1)) && (count_streams < position2)){
                 // addNum=0;
                 addNum=0;
                 if(decimalCounter % 8 == 0){
@@ -67,24 +64,21 @@ void pixel(ap_int<32> &in_decimal,
 		        //     decNum = decNum/1000;
                 // }
 
-                if(pkt.data % 2 == 0 && addNum == 1){
-                    pkt.data += 1;
+                if(tmpA.data % 2 == 0 && addNum == 1){
+                    tmpA.data += 1;
                     
-                }else if(pkt.data % 2 != 0 && addNum == 0){
-                    pkt.data -= 1;
+                }else if(tmpA.data % 2 != 0 && addNum == 0){
+                    tmpA.data -= 1;
                     
                 }
                 decimalCounter++;
 
-            }
-
             break;
 
         case 1:
-            if((count_streams >= (position1 - 1)) && (count_streams < position2)){
                 
                 
-                decrypt(pkt.data);
+                decrypt(tmpA.data);
                 decimalCounter++;
                 if(decimalCounter == 8){
                     decimalOut=decimalOut*100+convertBinInt(final_char);  
@@ -93,7 +87,6 @@ void pixel(ap_int<32> &in_decimal,
                 }
             
                 
-            }
             break;
 
         default:
@@ -102,7 +95,7 @@ void pixel(ap_int<32> &in_decimal,
 	
 	count_streams++;
 
-	if (count_streams == position2-1){
+	if (count_streams == stream_count){
 		count_streams = 0;
         charIn=0;
         addNum=0;
@@ -115,7 +108,13 @@ void pixel(ap_int<32> &in_decimal,
 
 	}
 
-    dout.write(pkt);
+    if(count_streams == stream_count){
+	        tmpA.last = 1;
+	    }
+	    tmpA.strb = 0xf;
+
+	    dout << tmpA;
+
 }
 
 
