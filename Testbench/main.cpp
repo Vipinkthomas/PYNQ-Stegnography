@@ -3,37 +3,39 @@
 
 int main() {
 
+//	vec_t key,keyout;
 	stream streamIn;
 	stream streamOut;
-
 	pkt_t tmp;
+	ap_int<32> indecimal;
 	ap_int<32> a;
 	ap_int<32> selector,position1,position2,stream_count;
 		selector=0;
 	    position1=1;
-	    position2=3;
-	    stream_count=27;
-	    a=50;
+	    position2=8;
+	    indecimal=72;
+//	for (auto& x: key) {
+//		x = 'a';
+//		std::cout << "Key: " << x << std::endl;
+//	}
 
-	for (int y = 0; y < 3; y++) {
-	    for (int x = 0; x < 3; x++) {
-	    	for (int z = 0;z < 3; z++){
+	for (int y = position1-1; y < position2; y++) {
 
 	        tmp.data = 255;
-	        tmp.user = (x == 0) && (y == 0)&&(z==0);
-	        tmp.last = (y == 2);
+	        tmp.user = (y == 0);
+//	        tmp.last = (y == position2);
 	        streamIn.write(tmp);
 	        std::cout << "input: " << tmp.data << std::endl;
 
-	        pixel(selector,position1,position2,stream_count,a,streamIn,streamOut);
+	        pixel(indecimal,selector,position1,position2,streamIn,streamOut);
 
 	        tmp = streamOut.read();
 	        std::cout << "Output: " << tmp.data << std::endl;
 	    	}
-	    }
-	}
-
+	std::cout << "Value decoded: " << indecimal << std::endl;
 
     return 0;
 
 }
+
+
