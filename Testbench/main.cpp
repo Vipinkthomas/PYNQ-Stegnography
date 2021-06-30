@@ -34,6 +34,13 @@ int main() {
 	    	}
 	std::cout << "Value decoded: " << indecimal << std::endl;
 
+	if(selector==1){
+		std::cout << "Value decoded: " << indecimal << std::endl;
+	}
+	else if(selector==0){
+		std::cout << "Value encoded: " << indecimal << std::endl;
+	}
+
     return 0;
 
 }
