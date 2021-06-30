@@ -1,6 +1,6 @@
 HLS_SRC := pixel.cpp
 HLS_TOP := pixel
-RTL_TOP := overlay
+RTL_TOP := steganography
 .DEFAULT_GOAL := default
 
 %.mk:
