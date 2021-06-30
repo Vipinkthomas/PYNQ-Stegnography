@@ -27,7 +27,6 @@ void pixel(ap_int<32> &in_decimal,
         ap_int<32> selector,
 		ap_int<32> position1,
 		ap_int<32> position2,
-		ap_int<32> stream_count,
 		hls::stream< pkt_t > &din,
 		hls::stream< pkt_t > &dout
 ) {
@@ -36,7 +35,6 @@ void pixel(ap_int<32> &in_decimal,
     #pragma HLS INTERFACE s_axilite port=selector
 	#pragma HLS INTERFACE s_axilite port=position1
 	#pragma HLS INTERFACE s_axilite port=position2
-	#pragma HLS INTERFACE s_axilite port=stream_count
 	#pragma HLS INTERFACE axis port=din
 	#pragma HLS INTERFACE axis port=dout
 
@@ -104,7 +102,7 @@ void pixel(ap_int<32> &in_decimal,
 	
 	count_streams++;
 
-	if (count_streams == stream_count){
+	if (count_streams == position2-1){
 		count_streams = 0;
         charIn=0;
         addNum=0;
