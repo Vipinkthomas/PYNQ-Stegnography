@@ -5,8 +5,10 @@
 #include <string.h>
 
 using namespace std;
-
+typedef ap_int<32> apint;
 typedef ap_axis<32,0,0,0> pkt_t;
+typedef hls::stream< pkt_t > stream;
+
 static int count_streams = 0;
 static long long charIn=0;
 static long long final_char=0;
@@ -23,11 +25,11 @@ void toAscii(char *c);
 int getDecimal(int n);
 pkt_t tmpA;
 
-void pixel(ap_int<32> &in_decimal,
-        ap_int<32> selector,
-		ap_int<32> stream_count,
-		hls::stream< pkt_t > &din,
-		hls::stream< pkt_t > &dout
+void pixel(apint &in_decimal,
+        apint selector,
+		apint stream_count,
+		stream &din,
+		stream &dout
 ) {
 	#pragma HLS INTERFACE ap_ctrl_none port=return
     #pragma HLS INTERFACE s_axilite port=in_decimal
