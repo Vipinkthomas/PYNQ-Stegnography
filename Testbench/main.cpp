@@ -3,7 +3,6 @@
 
 int main() {
 
-//	vec_t key,keyout;
 	stream streamIn;
 	stream streamOut;
 	pkt_t tmp;
@@ -14,10 +13,6 @@ int main() {
 	    position1=1;
 	    position2=8;
 	    indecimal=72;
-//	for (auto& x: key) {
-//		x = 'a';
-//		std::cout << "Key: " << x << std::endl;
-//	}
 
 	for (int y = position1-1; y < position2; y++) {
 
@@ -32,8 +27,8 @@ int main() {
 	        tmp = streamOut.read();
 	        std::cout << "Output: " << tmp.data << std::endl;
 	    	}
-	std::cout << "Value decoded: " << indecimal << std::endl;
-
+	
+	
 	if(selector==1){
 		std::cout << "Value decoded: " << indecimal << std::endl;
 	}
