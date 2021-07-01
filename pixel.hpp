@@ -21,7 +21,7 @@ int lastDecimalVal;              //holds decimal value of one character
 
 long long convert(int n);
 int convertBinInt(long long n);
-void decrypt(int data);
+void decode(int data);
 void toAscii(char *c);
 int getDecimal(int n);
 pkt_t tmpA;
