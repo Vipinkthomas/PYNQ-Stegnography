@@ -30,13 +30,24 @@ image credits: [wikimedia](https://en.wikipedia.org/wiki/Bit_numbering#mediaview
 
 1. Setting the pixel area for embedding the secret identifier through register map.
 2. Sending the images bytes as stream
-3. udpating or manipulating the pixels
+3. udpating or manipulating the pixels using LSB manipulation alogorithms
 
+## Time Distribution
 
+Brainstorming : 10hrs
+
+Alogorithm : 12 hrs
+
+Overlay Synthesis : 6 hrs
+
+Optimization : 6 hrs
+
+Python : 8 hrs
+
+Documention : 5hrs
 
 ## Resources
 PYNQ-Z2 
-
 Jupyter Notebook
-
 Xlinix Documention
+Image Libraries
