@@ -48,6 +48,9 @@ Documention : 5hrs
 
 ## Resources
 PYNQ-Z2 
+
 Jupyter Notebook
+
 Xlinix Documention
+
 Image Libraries
