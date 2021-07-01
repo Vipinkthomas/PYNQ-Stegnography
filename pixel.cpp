@@ -9,14 +9,15 @@ typedef ap_int<32> apint;
 typedef ap_axis<32,0,0,0> pkt_t;
 typedef hls::stream< pkt_t > stream;
 
-static int count_streams = 0;
-static long long charIn=0;
-static long long final_char=0;
-int addNum=0;
-static int decNum = 0;
-static int decimalCounter = 0;
-static int decimalOut = 0;
-int lastDecimalVal;
+//Initializations
+static int count_streams = 0;    //counter of data input streams
+static long long charIn=0;       // to store binary values for each charachter decimal val
+static long long final_char=0;   // binary value of decoded data
+int addNum=0;                    // holds lsb of CharIn
+static int decNum = 0;           //holds the decimal value for all characters
+static int decimalCounter = 0;   //used to shift to other charachter decimal value
+static int decimalOut = 0;       // holds the decimal value of the characters (decoding)
+int lastDecimalVal;              //holds decimal value of one character
 
 long long convert(int n);
 int convertBinInt(long long n);
@@ -39,7 +40,7 @@ void pixel(apint &in_decimal,
 	#pragma HLS INTERFACE axis port=dout
 
     din >> tmpA;
-    // toAscii(key);
+
     switch(selector)
     {
         case 0:
@@ -48,8 +49,7 @@ void pixel(apint &in_decimal,
                 final_char=0;
                 decNum = in_decimal;
             }
-            //123456321
-                // addNum=0;
+
                 addNum=0;
                 if(decimalCounter % 8 == 0){
                     lastDecimalVal = getDecimal(decNum);
@@ -59,12 +59,6 @@ void pixel(apint &in_decimal,
                 }
                 addNum=charIn%10;
 		        charIn=(int)charIn/10;
-
-                
-                // if(decNum !=0 ){
-                //     pkt.data += getDecimal(decNum);
-		        //     decNum = decNum/1000;
-                // }
 
                 if(tmpA.data % 2 == 0 && addNum == 1){
                     tmpA.data += 1;
