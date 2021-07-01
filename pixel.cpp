@@ -121,6 +121,7 @@ void pixel(apint &in_decimal,
 
 
 long long convert(int n) {
+    /**/
     long long bin = 0;
     int rem, i = 1, step = 1;
     while (n != 0) {
@@ -133,6 +134,7 @@ long long convert(int n) {
 }
 
 void decrypt(int data) {
+    /**/
 int bit;
 if(data % 2 == 0){
    bit = 0;
@@ -144,6 +146,7 @@ final_char= final_char*10+bit;
 }
 
 int convertBinInt(long long n) {
+    /**/
 int dec = 0, i = 7, b=0,rem=0;
     while (n != 0) {
         b=pow(10,i);
@@ -156,6 +159,7 @@ int dec = 0, i = 7, b=0,rem=0;
 }
 
 int getDecimal(int n) {
+    /**/
     int num = 0;
     num = n % 100;
     return num;
