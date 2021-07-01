@@ -110,6 +110,7 @@ long long convert(int n) {
     long long bin = 0;
     int rem, i = 1, step = 1;
     while (n != 0) {
+        #pragma HLS unroll
         rem = n % 2;
         n /= 2;
         bin += rem * i;
@@ -139,6 +140,7 @@ int convertBinInt(long long n) {
     int dec = 0, i = 7, b=0,rem=0;
 
         while (n != 0) {
+            #pragma HLS unroll
             b=pow(10,i);
             rem = n / b;
             n =n % b;
