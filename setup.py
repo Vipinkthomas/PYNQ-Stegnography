@@ -1,5 +1,5 @@
 from setuptools import setup
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "Embedded Acceleration"))
 setup(name='Embedded Acceleration',
       version='0.1',
       description='pynq-jupyter',
