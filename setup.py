@@ -1,10 +1,9 @@
 from setuptools import setup
 import os
-os.system("git clone https://mygit.th-deg.de/vt16684/embedded-acceleration.git")
 setup(name='Embedded Acceleration',
       version='0.1',
       description='pynq-jupyter',
-      url='https://mygit.th-deg.de/vt16684/embedded-acceleration.git',
+      url='https://mygit.th-deg.de/vt16684/embedded-acceleration',
       author='vipin and Majd',
       author_email='vipin.thomas@stud.th-deg.de',
       license='MIT',
