@@ -6,12 +6,12 @@ void pixel(apint &in_decimal,
 		   stream &din,
 		   stream &dout
 ) {
-	#pragma HLS INTERFACE ap_ctrl_none port=return
-    #pragma HLS INTERFACE s_axilite port=in_decimal     // ascii values for the characters(word)
-    #pragma HLS INTERFACE s_axilite port=selector       // to select the mode (encoding or decoding)
-	#pragma HLS INTERFACE s_axilite port=stream_count   // size of data stream 
-	#pragma HLS INTERFACE axis port=din
-	#pragma HLS INTERFACE axis port=dout
+	    #pragma HLS INTERFACE ap_ctrl_none port=return
+        #pragma HLS INTERFACE s_axilite port=in_decimal     // ascii values for the characters(word)
+        #pragma HLS INTERFACE s_axilite port=selector       // to select the mode (encoding or decoding)
+	    #pragma HLS INTERFACE s_axilite port=stream_count   // size of data stream 
+	    #pragma HLS INTERFACE axis port=din
+	    #pragma HLS INTERFACE axis port=dout
 
     din >> tmpA;  //input data
 
