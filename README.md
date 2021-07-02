@@ -14,6 +14,6 @@
 
 5. Use Test bench files to do the debugging and add changes before synthesizing new overlay.
 
-6. Use the given Jupyter notebook to test your iP.
+6. Use the given Jupyter notebook to test your iP.(NOTE: Speed ups graphs cannot be displayed on Gitlab)
 
 
