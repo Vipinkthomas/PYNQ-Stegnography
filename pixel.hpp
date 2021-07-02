@@ -9,7 +9,7 @@ typedef ap_int<32> apint;
 typedef ap_axis<32,0,0,0> pkt_t;
 typedef hls::stream< pkt_t > stream;
 
-//Initializations
+/*Initializations*/
 static int count_streams = 0;    //counter of data input streams
 static long long charIn=0;       // to store binary values for each charachter decimal val
 static long long final_char=0;   // binary value of decoded data
@@ -19,9 +19,9 @@ static int decimalCounter = 0;   //used to shift to other charachter decimal val
 static int decimalOut = 0;       // holds the decimal value of the characters (decoding)
 int lastDecimalVal;              //holds decimal value of one character
 
-long long convert(int n);
+long long convert(int n);       //This function converts a decimal number to a Binary number and returns it
 int convertBinInt(long long n);
-void decode(int data);
+void decode(int data);          //get the binary value of the embedded ascii values by combining the LSBs.
 void toAscii(char *c);
 int getDecimal(int n);
 pkt_t tmpA;
