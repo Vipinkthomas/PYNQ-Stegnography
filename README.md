@@ -8,8 +8,7 @@
 
 2. load vitis settings.sh file`. /opt/Xilinx/Vitis_HLS/2020.2/settings64.sh`  and run ` make clean && make`
 
-3. open the RTL file in vivado and connect the pins as mentioned in the stenganography.pdf (optional: make necessary clock frequency changes)
-- Click on ZYNQ7 Processing system -> Clock configuration
+3. open the RTL file in vivado and connect the pins as mentioned in the stenganography.pdf (optional: make necessary clock frequency changes ... Click on ZYNQ7 Processing system -> Clock configuration)
 
 4. (optional load Vivado settings.sh file) run `make`
 
