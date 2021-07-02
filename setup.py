@@ -3,7 +3,7 @@ from setuptools import setup
 setup(name='Embedded Acceleration',
       version='0.1',
       description='pynq-jupyter',
-      url='https://mygit.th-deg.de/vt16684/embedded-acceleration',
+      url='https://mygit.th-deg.de/vt16684/embedded-acceleration.git',
       author='vipin and Majd',
       author_email='vipin.thomas@stud.th-deg.de',
       license='MIT',
