@@ -16,6 +16,3 @@ setup(name='Embedded Acceleration',
                          'pillow',
                          'numpy'],
       zip_safe=False)
-
-
-
