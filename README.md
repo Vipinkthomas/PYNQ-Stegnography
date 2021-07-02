@@ -1,10 +1,13 @@
-# How to Compile and Run
+# How to Run
 
 
 1. Clone the project to a PYNQ-Z2 board `git clone https://mygit.th-deg.de/vt16684/embedded-acceleration.git` and run the jupyter notebook **or**
 
 1. install the git project with `pip install git+https://mygit.th-deg.de/vt16684/embedded-acceleration` to get all the required python packages before running the jupyter notebook. We are using `pynq package version 2.6.0`(that have not been included in the setup.py). 
 
+# How to Compile using Linux terminal
+
+1. Clone the project `git clone https://mygit.th-deg.de/vt16684/embedded-acceleration.git`
 
 2. load vitis settings.sh file`. /opt/Xilinx/Vitis_HLS/2020.2/settings64.sh`  and run ` make clean && make`
 
