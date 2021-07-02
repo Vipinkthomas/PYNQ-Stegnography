@@ -1,7 +1,7 @@
 # How to Compile and Run
 
 
-1. Clone the project `git clone 'url'` to joan server 
+1. Clone the project `git clone 'url'` or install the git project with `pip install git+https://mygit.th-deg.de/vt16684/embedded-acceleration` to get all the required python packages before running the jupyter notebook. We are using `pynq package version 2.6.0`(that have not been included in the setup.py). 
 
 2. load vitis settings.sh file`. /opt/Xilinx/Vitis_HLS/2020.2/settings64.sh`  and run ` make clean && make`
 
@@ -12,3 +12,5 @@
 5. Use Test bench files to do the debugging and add changes before synthesizing new overlay.
 
 6. Use the given Jupyter notebook to test your iP.
+
+
