@@ -1,6 +1,6 @@
 from setuptools import setup
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "Embedded Pixel_Image_Steganography_1_.ipynb"))
+os.system("git clone https://mygit.th-deg.de/vt16684/embedded-acceleration.git")
 setup(name='Embedded Acceleration',
       version='0.1',
       description='pynq-jupyter',
