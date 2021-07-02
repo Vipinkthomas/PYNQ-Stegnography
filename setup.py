@@ -1,4 +1,5 @@
 from setuptools import setup
+import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "Embedded Pixel_Image_Steganography_1_.ipynb"))
 setup(name='Embedded Acceleration',
       version='0.1',
