@@ -12,10 +12,9 @@ setup(name='Embedded Acceleration',
                         'requests==2.25.1',
                          'panda==0.3.1',
                          'plotly==5.1.0',
-                         'matplotlib==2.1.1',
-                         'pillow==5.1.1',
-                         'numpy==1.16.0',
-                         'pynq==2.6.0'],
+                         'matplotlib',
+                         'pillow',
+                         'numpy'],
       zip_safe=False)
 
 
