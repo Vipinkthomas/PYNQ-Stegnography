@@ -20,7 +20,7 @@ static int decimalOut = 0;       // holds the decimal value of the characters (d
 int lastDecimalVal;              //holds decimal value of one character
 
 long long convert(int n);       //This function converts a decimal number to a Binary number and returns it
-int convertBinInt(long long n);
+int convertBinInt(long long n); //This function returns decimal value from a binary number
 void decode(int data);          //get the binary value of the embedded ascii values by combining the LSBs.
 void toAscii(char *c);
 int getDecimal(int n);
