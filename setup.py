@@ -14,6 +14,5 @@ setup(name='Embedded Acceleration',
                          'plotly==5.1.0',
                          'matplotlib',
                          'pillow',
-                         'numpy',
-                         'git+https://mygit.th-deg.de/vt16684/embedded-acceleration.git'],
+                         'numpy'],
       zip_safe=False)
