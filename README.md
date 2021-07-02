@@ -1,7 +1,7 @@
 # How to Compile and Run
 
 
-1. Clone the project with `git clone 'url'` **or**
+1. Clone the project with `git clone https://mygit.th-deg.de/vt16684/embedded-acceleration.git` **or**
 
 1. install the git project with `pip install git+https://mygit.th-deg.de/vt16684/embedded-acceleration` to get all the required python packages before running the jupyter notebook. We are using `pynq package version 2.6.0`(that have not been included in the setup.py). 
 
